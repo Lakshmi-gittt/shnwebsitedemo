@@ -30,12 +30,10 @@ export default function Timeline() {
           </div>
         </motion.div>
 
-        {/* Cards — mobile: horizontal scroll, md+: grid */}
-        <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-5 px-5">
+        {/* Cards — mobile: vertical stack, md+: grid */}
+        <div className="flex flex-col gap-5 md:hidden">
           {upcomingNights.map((event, i) => (
-            <div key={event.id} className="min-w-[80vw] snap-start shrink-0">
-              <HackNightCard event={event} index={i} />
-            </div>
+            <HackNightCard key={event.id} event={event} index={i} />
           ))}
         </div>
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">

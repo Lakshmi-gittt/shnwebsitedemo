@@ -46,7 +46,7 @@ export default function HackNightCard({ event, index }: HackNightCardProps) {
 
         {/* Theme */}
         <div>
-          <h3 className="font-display text-2xl sm:text-3xl font-black text-black leading-tight mb-2">
+          <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-black text-black leading-tight mb-2">
             {event.theme}
           </h3>
           <p className="text-black/80 text-sm font-medium leading-relaxed line-clamp-2">{event.about}</p>

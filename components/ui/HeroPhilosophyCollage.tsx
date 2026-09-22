@@ -29,10 +29,6 @@ const collagePhotos: CollagePhoto[] = [
   // 1. Far Left Top Edge: Builder coding at terminal
   {
     src: "/saturday-hack-night/collage/shn-footage-10.jpg",
-    alt: "Saturday HackNight builder coding terminal",
-    className: "w-44 h-32 sm:w-56 sm:h-38 md:w-64 md:h-44 rotate-[-2deg] rounded-[2px]",
-    style: { top: "3%", left: "2%" },
-    opacityClass: "opacity-[0.10] sm:opacity-[0.14]",
     alt: "Saturday HackNight builder terminal code",
     className: "w-44 h-32 sm:w-56 sm:h-40 md:w-68 md:h-46 rotate-[-2deg] rounded-[2px]",
     style: { top: "1%", left: "-1.5%" },
@@ -66,10 +62,6 @@ const collagePhotos: CollagePhoto[] = [
   // 5. Far Right Top Edge: Vertical portrait of builder
   {
     src: "/saturday-hack-night/collage/shn-footage-3.jpg",
-    alt: "Saturday HackNight builder at work",
-    className: "w-36 h-48 sm:w-48 sm:h-60 md:w-56 md:h-70 rotate-[2deg] rounded-[2px] hidden sm:block",
-    style: { top: "5%", right: "2.5%" },
-    opacityClass: "opacity-[0.11] sm:opacity-[0.15]",
     alt: "Saturday HackNight maker building",
     className: "w-36 h-48 sm:w-48 sm:h-64 md:w-56 md:h-76 rotate-[2deg] rounded-[2px]",
     style: { top: "2%", right: "-1%" },
@@ -81,10 +73,6 @@ const collagePhotos: CollagePhoto[] = [
   // 6. Left Edge: Late night workspace
   {
     src: "/saturday-hack-night/collage/shn-footage-1.jpg",
-    alt: "Saturday HackNight workspace",
-    className: "w-40 h-28 sm:w-52 sm:h-36 md:w-60 md:h-40 rotate-[1.5deg] rounded-[2px] hidden md:block",
-    style: { top: "27%", left: "2.5%" },
-    opacityClass: "opacity-[0.10] md:opacity-[0.13]",
     alt: "Saturday HackNight sprint environment",
     className: "w-40 h-52 sm:w-50 sm:h-64 md:w-58 md:h-74 rotate-[1.5deg] rounded-[2px]",
     style: { top: "18%", left: "-1%" },
@@ -110,10 +98,6 @@ const collagePhotos: CollagePhoto[] = [
   // 9. Far Right Edge: Collaborative group sprint
   {
     src: "/saturday-hack-night/collage/shn-footage-4.jpg",
-    alt: "Saturday HackNight collaborative building",
-    className: "w-48 h-34 sm:w-60 sm:h-42 md:w-72 md:h-48 rotate-[-1.5deg] rounded-[2px]",
-    style: { top: "31%", right: "2%" },
-    opacityClass: "opacity-[0.11] sm:opacity-[0.15]",
     alt: "Saturday HackNight paired developers",
     className: "w-44 h-32 sm:w-56 sm:h-40 md:w-68 md:h-48 rotate-[-2deg] rounded-[2px]",
     style: { top: "20%", right: "-1.5%" },
@@ -158,9 +142,6 @@ const collagePhotos: CollagePhoto[] = [
   // 14. Right Transition Edge: Big Saturday HackNight Group Celebration 2
   {
     src: "/saturday-hack-night/collage/shn-group-2.jpg",
-    alt: "Saturday HackNight group celebration",
-    className: "w-52 h-36 sm:w-64 sm:h-44 md:w-76 md:h-52 rotate-[1.5deg] rounded-[2px] hidden sm:block",
-    style: { top: "47%", right: "3.5%" },
     alt: "Saturday HackNight community group celebration",
     className: "w-52 h-36 sm:w-68 sm:h-48 md:w-84 md:h-58 rotate-[1.5deg] rounded-[2px]",
     style: { top: "36%", right: "-2%" },
@@ -187,11 +168,6 @@ const collagePhotos: CollagePhoto[] = [
   // 6. Transition Left: Physical maker lab — TinkerSpace Kochi
   // 17. Center-Right Transition: Late evening sprint
   {
-    src: "/saturday-hack-night/tinkerspace/tinkerspace-kochi.webp",
-    alt: "TinkerSpace maker lab Kochi",
-    className: "w-48 h-32 sm:w-60 sm:h-40 md:w-68 md:h-46 rotate-[-2deg] rounded-[2px] hidden md:block",
-    style: { top: "51%", left: "3%" },
-    opacityClass: "opacity-[0.11] md:opacity-[0.14]",
     src: "/saturday-hack-night/collage/shn-footage-22.jpg",
     alt: "Saturday HackNight evening builders",
     className: "w-44 h-30 sm:w-54 sm:h-36 md:w-62 md:h-40 rotate-[1.5deg] rounded-[2px] hidden lg:block",
@@ -205,9 +181,6 @@ const collagePhotos: CollagePhoto[] = [
   {
     src: "/saturday-hack-night/collage/shn-group-1.jpg",
     alt: "Saturday HackNight community builders group photo",
-    className: "w-56 h-38 sm:w-72 sm:h-48 md:w-84 md:h-56 rotate-[2deg] rounded-[2px]",
-    style: { top: "60%", right: "2.5%" },
-    opacityClass: "opacity-[0.12] sm:opacity-[0.16]",
     className: "w-56 h-38 sm:w-76 sm:h-52 md:w-96 md:h-64 rotate-[2deg] rounded-[2px]",
     style: { top: "54%", right: "-1.5%" },
     opacityClass: "opacity-[0.16] sm:opacity-[0.22]",
@@ -224,10 +197,6 @@ const collagePhotos: CollagePhoto[] = [
   // 9. Philosophy Mid-Right (Opposite Manifesto Quote): Live table sprint footage
   {
     src: "/saturday-hack-night/collage/shn-footage-8.jpg",
-    alt: "Saturday HackNight active hackathon floor",
-    className: "w-48 h-34 sm:w-64 sm:h-44 md:w-76 md:h-50 rotate-[-1deg] rounded-[2px] hidden sm:block",
-    style: { top: "72%", right: "4%" },
-    opacityClass: "opacity-[0.11] sm:opacity-[0.15]",
     alt: "Saturday HackNight active build floor",
     className: "w-46 h-32 sm:w-60 sm:h-42 md:w-74 md:h-50 rotate-[-1.5deg] rounded-[2px] hidden sm:block",
     style: { top: "65%", right: "10%" },
@@ -239,10 +208,6 @@ const collagePhotos: CollagePhoto[] = [
   // 20. Philosophy Left Margin (Beside manifesto quote): Builder experimenting
   {
     src: "/saturday-hack-night/collage/shn-footage-7.jpg",
-    alt: "Saturday HackNight maker experimenting",
-    className: "w-36 h-48 sm:w-44 sm:h-58 md:w-50 md:h-64 rotate-[1.5deg] rounded-[2px] hidden lg:block",
-    style: { top: "77%", left: "2.5%" },
-    opacityClass: "opacity-[0.09] lg:opacity-[0.13]",
     alt: "Saturday HackNight prototype development",
     className: "w-36 h-48 sm:w-46 sm:h-60 md:w-54 md:h-70 rotate-[1.5deg] rounded-[2px] hidden md:block",
     style: { top: "73%", left: "-1%" },
@@ -253,9 +218,6 @@ const collagePhotos: CollagePhoto[] = [
   {
     src: "/saturday-hack-night/collage/shn-footage-11.jpg",
     alt: "Saturday HackNight late night push",
-    className: "w-44 h-30 sm:w-56 sm:h-38 md:w-68 md:h-46 rotate-[-1.5deg] rounded-[2px] hidden sm:block",
-    style: { top: "83%", right: "3%" },
-    opacityClass: "opacity-[0.11] sm:opacity-[0.14]",
     className: "w-48 h-34 sm:w-62 sm:h-44 md:w-76 md:h-52 rotate-[2deg] rounded-[2px]",
     style: { top: "74%", right: "1%" },
     opacityClass: "opacity-[0.14] sm:opacity-[0.19]",
@@ -281,9 +243,6 @@ const collagePhotos: CollagePhoto[] = [
   {
     src: "/saturday-hack-night/collage/shn-footage-12.jpg",
     alt: "Saturday HackNight demo presentation",
-    className: "w-44 h-30 sm:w-56 sm:h-38 md:w-64 md:h-44 rotate-[1deg] rounded-[2px] hidden md:block",
-    style: { top: "88%", left: "5%" },
-    opacityClass: "opacity-[0.09] md:opacity-[0.12]",
     className: "w-44 h-30 sm:w-54 sm:h-38 md:w-64 md:h-44 rotate-[-1deg] rounded-[2px] hidden sm:block",
     style: { top: "86%", left: "6%" },
     opacityClass: "opacity-[0.12] sm:opacity-[0.15]",

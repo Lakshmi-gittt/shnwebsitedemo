@@ -72,13 +72,12 @@ function StepCard({
   return (
     <div
       style={{ backgroundColor: step.color }}
-      className={`w-full max-w-md p-5 sm:p-6 rounded-xl border-black text-black transition-all duration-200 ${
+      className={`w-full p-5 sm:p-6 rounded-xl border-black text-black transition-all duration-200 ${
         isActive
           ? "scale-[1.02] border-[3.5px] shadow-[6px_6px_0px_0px_#000]"
           : "border-[2.5px] shadow-[4px_4px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_#000]"
       }`}
     >
-      {/* Header: step number + time label + icon */}
       <div className="flex items-center justify-between gap-3 border-b-2 border-black/80 pb-3 mb-3">
         <div className="flex items-center gap-2">
           <span className="font-mono text-xs font-black px-2 py-0.5 bg-black text-white rounded border border-black uppercase tracking-wider">
@@ -92,13 +91,9 @@ function StepCard({
           <Icon size={14} strokeWidth={2.5} />
         </div>
       </div>
-
-      {/* Title */}
       <h3 className="font-display font-black text-lg sm:text-xl text-black leading-snug mb-1.5">
         {step.title}
       </h3>
-
-      {/* Description */}
       <p className="text-black font-medium text-xs sm:text-sm leading-relaxed">
         {step.description}
       </p>
@@ -117,7 +112,6 @@ export default function AfterRegister() {
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // Accessibility: check for reduced motion
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) {
       setShowBall(false);
@@ -140,9 +134,9 @@ export default function AfterRegister() {
     let stateTime = 0;
     let currentStep = 0;
 
-    const SPEED = 200; // constant uniform speed: 200 pixels per second
-    const PAUSE_DURATION = 500; // ms brief stop at each step
-    const FINAL_PAUSE_DURATION = 900; // ms stop at final step
+    const SPEED = 200;
+    const PAUSE_DURATION = 500;
+    const FINAL_PAUSE_DURATION = 900;
 
     const tick = (timestamp: number) => {
       if (!lastTimestamp) lastTimestamp = timestamp;
@@ -156,8 +150,7 @@ export default function AfterRegister() {
 
         if (state === "PAUSED") {
           stateTime += delta;
-          const targetY = positions[currentStep];
-          setBallY(targetY);
+          setBallY(positions[currentStep]);
           setActiveStep(currentStep);
 
           const limit = currentStep === 5 ? FINAL_PAUSE_DURATION : PAUSE_DURATION;
@@ -166,7 +159,6 @@ export default function AfterRegister() {
               state = "MOVING";
               stateTime = 0;
             } else {
-              // Reached final point, loop back to step 0
               currentStep = 0;
               state = "PAUSED";
               stateTime = 0;
@@ -206,7 +198,6 @@ export default function AfterRegister() {
     };
 
     window.addEventListener("resize", handleResize);
-
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
@@ -232,91 +223,124 @@ export default function AfterRegister() {
           </h2>
         </motion.div>
 
-        {/* Timeline Track & Cards */}
+        {/* ─── TIMELINE ─── */}
         <div ref={containerRef} className="relative">
-          {/* The Single Continuous Straight Vertical Line */}
+
+          {/* ── Vertical line ──
+              Mobile:  left-5  (20px from left edge, the dot column)
+              Desktop: left-1/2 (centered between the two card columns) */}
           <div
-            className="absolute left-5 md:left-1/2 -translate-x-1/2 w-[3px] bg-black z-0"
+            className="absolute left-5 md:left-1/2 w-[3px] bg-black z-0 -translate-x-1/2"
             style={{
               top: `${lineTop}px`,
               height: lineHeight > 0 ? `${lineHeight}px` : "100%",
             }}
           />
 
-          {/* Animated Falling Ball traveling down the track */}
+          {/* ── Animated ball ── */}
           {showBall && (
             <div
-              className="absolute left-5 md:left-1/2 -translate-x-1/2 z-20 w-5 h-5 rounded-full bg-[#F28AD8] border-[2.5px] border-black shadow-[1.5px_1.5px_0px_0px_#000] pointer-events-none transition-transform"
-              style={{
-                top: `${ballY}px`,
-                transform: "translate(-50%, -50%)",
-              }}
+              className="absolute left-5 md:left-1/2 z-20 w-5 h-5 rounded-full bg-[#F28AD8] border-[2.5px] border-black shadow-[1.5px_1.5px_0px_0px_#000] pointer-events-none"
+              style={{ top: `${ballY}px`, transform: "translate(-50%, -50%)" }}
               aria-hidden="true"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-white mx-auto mt-0.5" />
             </div>
           )}
 
-          {/* 6 Steps */}
-          <div className="space-y-8 md:space-y-12 relative z-10">
+          {/* ── Step rows ── */}
+          <div className="space-y-10 md:space-y-14 relative z-10">
             {steps.map((step, i) => {
-              const isEven = i % 2 === 0; // 0, 2, 4 -> steps 01, 03, 05 (Left on desktop)
-              const isOdd = i % 2 === 1; // 1, 3, 5 -> steps 02, 04, 06 (Right on desktop)
+              const isLeft = i % 2 === 0;   // desktop: card goes LEFT  (01,03,05)
               const isCurrent = activeStep === i;
 
               return (
-                <div key={step.stepNum} className="relative">
-                  {/* Stationary Circular Point sitting directly on the line */}
+                <motion.div
+                  key={step.stepNum}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  {/* Single invisible anchor for ball animation — always in DOM */}
                   <div
-                    ref={(el) => {
-                      dotRefs.current[i] = el;
-                    }}
-                    className={`absolute left-5 md:left-1/2 top-8 md:top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-4 h-4 rounded-full border-2 border-black transition-all duration-200 flex items-center justify-center ${
-                      isCurrent ? "bg-black scale-125" : "bg-white"
-                    }`}
-                  >
-                    {!isCurrent && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-black" />
-                    )}
-                  </div>
+                    ref={(el) => { dotRefs.current[i] = el; }}
+                    className="absolute left-5 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 pointer-events-none"
+                    aria-hidden="true"
+                  />
 
-                  {/* Desktop Layout (Alternating Left / Right) & Mobile Layout (Right of line) */}
-                  <div className="flex flex-col md:flex-row items-start md:items-center pl-12 md:pl-0">
-                    {/* Left Slot (Desktop steps 01, 03, 05) */}
+                  {/* ──────────────────────────────────────────
+                      MOBILE layout  (< md)
+                      Line at left-5. Dot centred on line.
+                      Card stretches to the right.
+                  ────────────────────────────────────────── */}
+                  <div className="flex items-center gap-0 md:hidden">
+
+                    {/* Dot — sits on the line (left-5 = 20px, dot is 16px wide → centered) */}
                     <div
-                      className={`hidden md:flex flex-1 justify-end items-center ${
-                        isEven ? "opacity-100" : "opacity-0 pointer-events-none"
+                      className={`shrink-0 w-4 h-4 rounded-full border-2 border-black z-10 flex items-center justify-center transition-all duration-200 ${
+                        isCurrent ? "bg-black scale-125" : "bg-white"
                       }`}
+                      style={{ marginLeft: "12px" /* centers the 16px dot on the 3px line at left-5(20px) */ }}
                     >
-                      {isEven && (
-                        <div className="flex items-center w-full justify-end">
-                          <StepCard step={step} isActive={isCurrent} />
-                          {/* Horizontal connector to central line */}
-                          <div className="w-8 lg:w-12 h-[2.5px] bg-black shrink-0" />
-                        </div>
-                      )}
+                      {!isCurrent && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
                     </div>
 
-                    {/* Center Spacer on Desktop around the line & point */}
-                    <div className="hidden md:block w-12 shrink-0" />
+                    {/* Short horizontal connector */}
+                    <div className="w-4 h-[2.5px] bg-black shrink-0" />
 
-                    {/* Right Slot (Desktop steps 02, 04, 06 + Mobile all steps) */}
-                    <div
-                      className={`flex-1 flex items-center w-full ${
-                        isOdd
-                          ? "md:opacity-100"
-                          : "md:opacity-0 md:pointer-events-none md:hidden"
-                      }`}
-                    >
-                      {/* Mobile horizontal connector */}
-                      <div className="md:hidden w-5 h-[2.5px] bg-black shrink-0 -ml-5 mr-2" />
-                      {/* Desktop horizontal connector */}
-                      <div className="hidden md:block w-8 lg:w-12 h-[2.5px] bg-black shrink-0" />
-                      {/* Card */}
+                    {/* Card */}
+                    <div className="flex-1 min-w-0">
                       <StepCard step={step} isActive={isCurrent} />
                     </div>
                   </div>
-                </div>
+
+                  {/* ──────────────────────────────────────────
+                      DESKTOP layout  (≥ md)
+                      Centred line. Even steps → card LEFT.
+                      Odd steps → card RIGHT.
+                  ────────────────────────────────────────── */}
+                  <div className="hidden md:flex items-center">
+
+                    {/* LEFT half */}
+                    <div className="flex-1 flex justify-end items-center">
+                      {isLeft ? (
+                        <>
+                          <StepCard step={step} isActive={isCurrent} />
+                          {/* connector: card → line */}
+                          <div className="w-10 lg:w-14 h-[2.5px] bg-black shrink-0" />
+                        </>
+                      ) : (
+                        /* empty right-hand steps in left column */
+                        <div className="w-10 lg:w-14 h-[2.5px] bg-black/20 shrink-0" />
+                      )}
+                    </div>
+
+                    {/* Centre dot — sits exactly on the centre line */}
+                    <div
+                      className={`shrink-0 w-4 h-4 rounded-full border-2 border-black z-10 flex items-center justify-center transition-all duration-200 ${
+                        isCurrent ? "bg-black scale-125" : "bg-white"
+                      }`}
+                    >
+                      {!isCurrent && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
+                    </div>
+
+                    {/* RIGHT half */}
+                    <div className="flex-1 flex justify-start items-center">
+                      {!isLeft ? (
+                        <>
+                          {/* connector: line → card */}
+                          <div className="w-10 lg:w-14 h-[2.5px] bg-black shrink-0" />
+                          <StepCard step={step} isActive={isCurrent} />
+                        </>
+                      ) : (
+                        <div className="w-10 lg:w-14 h-[2.5px] bg-black/20 shrink-0" />
+                      )}
+                    </div>
+
+                  </div>
+                </motion.div>
               );
             })}
           </div>
