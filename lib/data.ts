@@ -820,4 +820,4 @@ export const REGISTER_URL = "https://hub.tinkerhub.org";
 export const DISCORD_URL = "https://discord.gg/tinkerhub";
 export const TINKERSPACE_MAPS_URL =
   "https://maps.google.com/?q=TinkerSpace+Kochi";
-export const STICKERS_URL = "/saturday-hack-night/stickers/";
+export const STICKERS_URL = "/stickers/";

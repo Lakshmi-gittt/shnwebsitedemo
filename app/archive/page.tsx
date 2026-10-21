@@ -38,7 +38,7 @@ export default function ArchivePage() {
       <div className="sticky top-0 z-50 border-b-2 border-black bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4">
           <a
-            href="/saturday-hack-night/"
+            href="/"
             className="flex items-center gap-2 font-mono text-sm font-bold text-black hover:underline"
           >
             <ArrowLeft size={16} strokeWidth={2.5} />
@@ -103,7 +103,7 @@ export default function ArchivePage() {
             return (
               <motion.a
                 key={night.slug}
-                href={`/saturday-hack-night/archive/${night.slug}/`}
+                href={`/archive/${night.slug}/`}
                 className={`rounded-2xl border-[3px] border-black ${palette.bg} text-black p-6 sm:p-8 flex flex-col sm:flex-row gap-6 group shadow-[5px_5px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0px_0px_#000] transition-all duration-200 block ${rotation}`}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}

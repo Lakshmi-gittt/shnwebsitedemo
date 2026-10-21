@@ -102,7 +102,7 @@ export default function CampusPage() {
         {/* Breadcrumb back link */}
         <div className="mb-10">
           <a
-            href="/saturday-hack-night/"
+            href="/"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-[#111111]/70 hover:text-black hover:underline transition-colors"
           >
             <ArrowLeft size={14} strokeWidth={2.5} />
@@ -366,7 +366,7 @@ export default function CampusPage() {
               </h2>
             </div>
             <a
-              href="/saturday-hack-night/archive/"
+              href="/archive/"
               className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider font-bold text-[#111111] hover:text-[#F28AD8] transition-colors"
             >
               All hack nights <ArrowRight size={13} strokeWidth={2.5} />
@@ -377,7 +377,7 @@ export default function CampusPage() {
             {previousThemes.map((t) => (
               <a
                 key={t.slug}
-                href={`/saturday-hack-night/archive/${t.slug}/`}
+                href={`/archive/${t.slug}/`}
                 className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-black/[0.03] transition-colors px-2 -mx-2"
               >
                 <div>

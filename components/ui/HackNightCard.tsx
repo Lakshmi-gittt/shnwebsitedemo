@@ -86,7 +86,7 @@ export default function HackNightCard({ event, index }: HackNightCardProps) {
             Register
           </a>
           <a
-            href={`/saturday-hack-night/events/${event.slug}/`}
+            href={`/events/${event.slug}/`}
             className="flex items-center gap-1 font-mono text-xs font-extrabold text-black hover:underline"
           >
             Details

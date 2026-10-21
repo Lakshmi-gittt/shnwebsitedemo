@@ -57,7 +57,7 @@ export default function TinkerSpace() {
               <div className="rounded-lg overflow-hidden aspect-[16/10] bg-[#f5f4ee]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/saturday-hack-night/tinkerspace/tinkerspace-kochi.webp"
+                  src="/tinkerspace/tinkerspace-kochi.webp"
                   alt="TinkerSpace Kochi — venue for the SHN offline finale"
                   loading="lazy"
                   className="w-full h-full object-cover block"

@@ -39,10 +39,10 @@ export default function Footer() {
                 {[
                   { label: "How It Works", href: "#get-selected" },
                   { label: "Upcoming Nights", href: "#timeline" },
-                  { label: "Past Nights", href: "/saturday-hack-night/archive/" },
-                  { label: "Moments", href: "/saturday-hack-night/moments/" },
+                  { label: "Past Nights", href: "/archive/" },
+                  { label: "Moments", href: "/moments/" },
                   { label: "Hall of Fame", href: "#hall-of-fame" },
-                  { label: "Campus Program", href: "/saturday-hack-night/campus/" },
+                  { label: "Campus Program", href: "/campus/" },
                 ].map((link) => (
                   <a
                     key={link.href}
@@ -62,7 +62,7 @@ export default function Footer() {
                 {[
                   { label: "Discord", href: "https://discord.gg/tinkerhub" },
                   { label: "TinkerSpace", href: "#tinkerspace" },
-                  { label: "Sticker Pack", href: "/saturday-hack-night/stickers/" },
+                  { label: "Sticker Pack", href: "/stickers/" },
                   { label: "GitHub", href: "https://github.com/appukurian/saturday-hack-night" },
                 ].map((link) => (
                   <a

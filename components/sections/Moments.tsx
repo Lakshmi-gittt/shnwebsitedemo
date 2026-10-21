@@ -27,7 +27,7 @@ export default function Moments() {
             </p>
           </div>
           <a
-            href="/saturday-hack-night/moments/"
+            href="/moments/"
             className="inline-flex items-center gap-2 font-mono text-sm font-extrabold text-black bg-white border-[3px] border-black px-6 py-3.5 rounded-xl shadow-[4px_4px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000] transition-all shrink-0"
           >
             View all moments

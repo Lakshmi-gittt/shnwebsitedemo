@@ -245,7 +245,7 @@ export default function StickersPage() {
       <div className="sticky top-0 z-50 border-b border-white/8 bg-[#000000]/90 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4 font-mono text-sm text-[#9a90b8]">
           <a
-            href="/saturday-hack-night/"
+            href="/"
             className="flex items-center gap-2 hover:text-white transition-colors"
           >
             <ArrowLeft size={14} />

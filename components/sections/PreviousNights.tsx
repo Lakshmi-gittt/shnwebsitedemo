@@ -49,7 +49,7 @@ export default function PreviousNights() {
             </p>
           </div>
           <a
-            href="/saturday-hack-night/archive/"
+            href="/archive/"
             className="inline-flex items-center gap-2 font-mono text-sm font-extrabold text-black bg-white border-[3px] border-black px-6 py-3.5 rounded-xl shadow-[4px_4px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000] transition-all shrink-0"
           >
             View all archives
@@ -64,7 +64,7 @@ export default function PreviousNights() {
             return (
               <motion.a
                 key={night.slug}
-                href={`/saturday-hack-night/archive/${night.slug}/`}
+                href={`/archive/${night.slug}/`}
                 className={`group ${config.colSpan} block rounded-2xl border-[3px] sm:border-[4px] border-black ${config.bg} text-black p-6 sm:p-8 flex flex-col justify-between shadow-[6px_6px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_0px_#000] transition-all duration-200 ${config.rotation}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

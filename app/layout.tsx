@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Saturday Hack Night — TinkerHub",
     description: "Build something real. Every Saturday. 6 PM. Free.",
     type: "website",
-    url: "https://appukurian.github.io/saturday-hack-night",
+    url: "https://shnwebsitedemo.vercel.app",
     siteName: "Saturday Hack Night",
   },
   twitter: {
