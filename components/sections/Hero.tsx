@@ -18,7 +18,7 @@ export default function Hero() {
     >
       <div className="relative z-10 w-full max-w-6xl mx-auto text-center flex flex-col items-center">
         {/* COMPACT MINIMAL HEADLINE WITH FALLING-LETTER ENTRANCE ANIMATION + POST-FALL HIGHLIGHT */}
-        <h1 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[var(--ink)] tracking-tight leading-tight mb-8 max-w-5xl flex flex-wrap lg:flex-nowrap justify-center items-center gap-x-2.5 sm:gap-x-3.5 lg:whitespace-nowrap" style={{ WebkitTextStroke: '1.5px #111111', paintOrder: 'stroke fill' }}>
+        <h1 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white tracking-tight leading-tight mb-8 max-w-5xl flex flex-wrap lg:flex-nowrap justify-center items-center gap-x-2.5 sm:gap-x-3.5 lg:whitespace-nowrap" style={{ WebkitTextStroke: '2px #111111', paintOrder: 'stroke fill' }}>
           {/* First part: STOP WATCHING. */}
           <span className="inline-flex gap-x-2.5 sm:gap-x-3.5">
             {firstWords.map((word, wordIdx) => {
