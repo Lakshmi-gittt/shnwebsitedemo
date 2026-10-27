@@ -14,3 +14,5 @@ export default function MotionProvider({
 }) {
   return <LazyMotion features={domAnimation}>{children}</LazyMotion>;
 }
+
+

@@ -14,9 +14,9 @@ export default function Philosophy() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-[#ff3ec8] font-bold uppercase tracking-widest mb-4">Our Philosophy</p>
+          <p className="font-mono text-xs text-black/60 font-bold uppercase tracking-widest mb-4">Our Philosophy</p>
           <h2 className="font-display font-black uppercase tracking-tight text-4xl sm:text-6xl lg:text-7xl text-black leading-[0.95]">
-            Learn by <span className="text-[#ff3ec8]">Doing</span>
+            Learn by <span className="text-black">Doing</span>
           </h2>
         </motion.div>
 
@@ -31,10 +31,13 @@ export default function Philosophy() {
           <p className="text-3xl sm:text-4xl font-bold text-black leading-tight">
             &ldquo;The project you shipped at SHN will teach you more than the course you almost finished.&rdquo;
           </p>
-          <p className="font-mono text-sm text-[#ff3ec8] font-bold mt-5">— TinkerHub Foundation</p>
+          <p className="font-mono text-sm text-black/60 font-bold mt-5">— TinkerHub Foundation</p>
         </motion.div>
       </div>
     </section>
   );
 }
+
+
+
 

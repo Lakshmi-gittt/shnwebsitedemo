@@ -25,7 +25,7 @@ function DigitBlock({ value, label, bgColor }: { value: number; label: string; b
           {pad(value)}
         </span>
       </div>
-      <span className="font-mono text-[10px] sm:text-xs md:text-sm font-bold text-black uppercase tracking-widest mt-2.5 px-2 py-0.5 border border-black bg-white rounded">
+      <span className="font-mono text-[10px] sm:text-xs md:text-sm font-bold text-black uppercase tracking-widest mt-2.5 px-2 py-0.5 border border-black bg-[#fde4cf] rounded">
         {label}
       </span>
     </div>
@@ -48,10 +48,13 @@ export default function LiveCountdown() {
       aria-atomic="true"
       aria-label={`${timeLeft.days} days ${timeLeft.hours} hours ${timeLeft.minutes} minutes ${timeLeft.seconds} seconds`}
     >
-      <DigitBlock value={timeLeft.days} label="DAYS" bgColor="bg-[#70d6ff]" />
-      <DigitBlock value={timeLeft.hours} label="HOURS" bgColor="bg-[#39ff8c]" />
-      <DigitBlock value={timeLeft.minutes} label="MINUTES" bgColor="bg-[#ff3ec8]" />
-      <DigitBlock value={timeLeft.seconds} label="SECONDS" bgColor="bg-[#ffd166]" />
+      <DigitBlock value={timeLeft.days} label="DAYS" bgColor="bg-[#d0ecf8]" />
+      <DigitBlock value={timeLeft.hours} label="HOURS" bgColor="bg-[#d4f5e0]" />
+      <DigitBlock value={timeLeft.minutes} label="MINUTES" bgColor="bg-[#f5d6ed]" />
+      <DigitBlock value={timeLeft.seconds} label="SECONDS" bgColor="bg-[#fde4cf]" />
     </div>
   );
 }
+
+
+

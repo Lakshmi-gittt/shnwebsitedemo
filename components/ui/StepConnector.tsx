@@ -17,7 +17,7 @@ export default function StepConnector() {
           y1="1"
           x2="100"
           y2="1"
-          stroke="#39ff8c"
+          stroke="#d4f5e0"
           strokeWidth="1"
           strokeDasharray="4 4"
           strokeOpacity="0.4"
@@ -27,7 +27,10 @@ export default function StepConnector() {
           viewport={{ once: true }}
         />
       </svg>
-      <div className="absolute w-2 h-2 rounded-full bg-[#39ff8c] opacity-60" />
+      <div className="absolute w-2 h-2 rounded-full bg-[#d4f5e0] opacity-60" />
     </div>
   );
 }
+
+
+

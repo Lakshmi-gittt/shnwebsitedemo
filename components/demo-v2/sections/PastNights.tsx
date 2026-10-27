@@ -1,7 +1,7 @@
 const nights = [
-  { title: "Edition #41", stat: "62 builders", bg: "bg-[#ff3ec8]", rotation: "transform -rotate-1" },
-  { title: "Edition #40", stat: "48 builders", bg: "bg-[#39ff8c]", rotation: "transform rotate-1" },
-  { title: "Edition #39", stat: "71 builders", bg: "bg-[#70d6ff]", rotation: "transform -rotate-0.5" },
+  { title: "Edition #41", stat: "62 builders", bg: "bg-[#f5d6ed]", rotation: "transform -rotate-1" },
+  { title: "Edition #40", stat: "48 builders", bg: "bg-[#d4f5e0]", rotation: "transform rotate-1" },
+  { title: "Edition #39", stat: "71 builders", bg: "bg-[#d0ecf8]", rotation: "transform -rotate-0.5" },
 ];
 
 export default function PastNightsContent() {
@@ -15,7 +15,7 @@ export default function PastNightsContent() {
           <h3 className="font-display font-black text-black text-2xl sm:text-3xl leading-tight">
             {n.title}
           </h3>
-          <p className="font-mono text-xs font-black text-black bg-white inline-block px-2 py-1 border border-black rounded mt-2 self-start">
+          <p className="font-mono text-xs font-black text-black bg-[#fde4cf] inline-block px-2 py-1 border border-black rounded mt-2 self-start">
             {n.stat}
           </p>
         </div>
@@ -23,3 +23,7 @@ export default function PastNightsContent() {
     </div>
   );
 }
+
+
+
+

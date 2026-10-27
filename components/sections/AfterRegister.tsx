@@ -12,7 +12,8 @@ const steps = [
     description:
       "You'll get a confirmation from hub.tinkerhub.org. Check spam if not seen within 5 minutes.",
     icon: Mail,
-    color: "#F28AD8",
+    color: "#f5d6ed",
+    cardBg: "bg-[#fae4f2]",
   },
   {
     stepNum: "02",
@@ -22,6 +23,7 @@ const steps = [
       "Join the SHN Discord. The Saturday theme is announced 24 hours in advance.",
     icon: MessageSquare,
     color: "#AEEAF5",
+    cardBg: "bg-[#e0f4fb]",
   },
   {
     stepNum: "03",
@@ -30,7 +32,8 @@ const steps = [
     description:
       "Full challenge brief goes live. Mentors come online. Build — no check-ins, no progress reports.",
     icon: Lightbulb,
-    color: "#91E47A",
+    color: "#d4f5e0",
+    cardBg: "bg-[#e6f7e2]",
   },
   {
     stepNum: "04",
@@ -40,6 +43,7 @@ const steps = [
       "Push to a public GitHub repo and submit via hub.app. A working prototype is enough.",
     icon: Github,
     color: "#FFD34E",
+    cardBg: "bg-[#fde4cf]",
   },
   {
     stepNum: "05",
@@ -48,7 +52,8 @@ const steps = [
     description:
       "The TinkerHub team reviews all submissions. Standout projects featured in Discord and the archive.",
     icon: Moon,
-    color: "#F28AD8",
+    color: "#f5d6ed",
+    cardBg: "bg-[#fae4f2]",
   },
   {
     stepNum: "06",
@@ -58,6 +63,7 @@ const steps = [
       "Top teams receive direct invitations to the 24-hour offline hackathon at TinkerSpace Kochi.",
     icon: Trophy,
     color: "#AEEAF5",
+    cardBg: "bg-[#e0f4fb]",
   },
 ];
 
@@ -71,30 +77,29 @@ function StepCard({
   const Icon = step.icon;
   return (
     <div
-      style={{ backgroundColor: step.color }}
-      className={`w-full p-5 sm:p-6 rounded-xl border-black text-black transition-all duration-200 ${
+      className={`w-full p-5 sm:p-6 rounded-xl border-2 border-black ${step.cardBg} text-black transition-all duration-200 relative overflow-hidden ${
         isActive
-          ? "scale-[1.02] border-[3.5px] shadow-[6px_6px_0px_0px_#000]"
-          : "border-[2.5px] shadow-[4px_4px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_#000]"
+          ? "shadow-md -translate-y-0.5"
+          : "shadow-sm hover:shadow-md hover:-translate-y-0.5"
       }`}
     >
-      <div className="flex items-center justify-between gap-3 border-b-2 border-black/80 pb-3 mb-3">
+      <div className="flex items-center justify-between gap-3 border-b border-black/15 pb-3 mb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs font-black px-2 py-0.5 bg-black text-white rounded border border-black uppercase tracking-wider">
+          <span className="font-mono text-xs font-bold px-2 py-0.5 bg-[#fde4cf] text-black rounded border border-black/30 uppercase tracking-wider">
             {step.stepNum}
           </span>
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-black">
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-black/70">
             {step.time}
           </span>
         </div>
         <div className="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center border border-black shrink-0">
-          <Icon size={14} strokeWidth={2.5} />
+          <Icon size={13} strokeWidth={2} />
         </div>
       </div>
-      <h3 className="font-display font-black text-lg sm:text-xl text-black leading-snug mb-1.5">
+      <h3 className="font-display font-bold text-lg sm:text-xl text-black leading-snug mb-1.5">
         {step.title}
       </h3>
-      <p className="text-black font-medium text-xs sm:text-sm leading-relaxed">
+      <p className="text-black/80 font-normal text-xs sm:text-sm leading-relaxed">
         {step.description}
       </p>
     </div>
@@ -215,11 +220,11 @@ export default function AfterRegister() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs font-black text-black uppercase tracking-widest mb-3 bg-[#91E47A] inline-block px-3 py-1 border-2 border-black rounded shadow-[2px_2px_0px_0px_#000]">
+          <p className="font-mono text-xs font-black text-black uppercase tracking-widest mb-3 bg-[#d4f5e0] inline-block px-3 py-1 border-2 border-black rounded shadow-[2px_2px_0px_0px_#000]">
             What Happens Next
           </p>
           <h2 className="font-display font-black uppercase tracking-tight text-4xl sm:text-6xl lg:text-7xl text-black leading-[0.95]">
-            After You <span className="text-[#F28AD8]">Register</span>
+            After You <span className="text-black">Register</span>
           </h2>
         </motion.div>
 
@@ -240,11 +245,11 @@ export default function AfterRegister() {
           {/* ── Animated ball ── */}
           {showBall && (
             <div
-              className="absolute left-5 md:left-1/2 z-20 w-5 h-5 rounded-full bg-[#F28AD8] border-[2.5px] border-black shadow-[1.5px_1.5px_0px_0px_#000] pointer-events-none"
+              className="absolute left-5 md:left-1/2 z-20 w-5 h-5 rounded-full bg-[#f5d6ed] border-[2.5px] border-black shadow-[1.5px_1.5px_0px_0px_#000] pointer-events-none"
               style={{ top: `${ballY}px`, transform: "translate(-50%, -50%)" }}
               aria-hidden="true"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-white mx-auto mt-0.5" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#fde4cf] mx-auto mt-0.5" />
             </div>
           )}
 
@@ -280,7 +285,7 @@ export default function AfterRegister() {
                     {/* Dot — sits on the line (left-5 = 20px, dot is 16px wide → centered) */}
                     <div
                       className={`shrink-0 w-4 h-4 rounded-full border-2 border-black z-10 flex items-center justify-center transition-all duration-200 ${
-                        isCurrent ? "bg-black scale-125" : "bg-white"
+                        isCurrent ? "bg-black scale-125" : "bg-[#fde4cf]"
                       }`}
                       style={{ marginLeft: "12px" /* centers the 16px dot on the 3px line at left-5(20px) */ }}
                     >
@@ -320,7 +325,7 @@ export default function AfterRegister() {
                     {/* Centre dot — sits exactly on the centre line */}
                     <div
                       className={`shrink-0 w-4 h-4 rounded-full border-2 border-black z-10 flex items-center justify-center transition-all duration-200 ${
-                        isCurrent ? "bg-black scale-125" : "bg-white"
+                        isCurrent ? "bg-black scale-125" : "bg-[#fde4cf]"
                       }`}
                     >
                       {!isCurrent && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
@@ -349,3 +354,7 @@ export default function AfterRegister() {
     </section>
   );
 }
+
+
+
+

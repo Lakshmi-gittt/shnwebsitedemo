@@ -25,10 +25,10 @@ export default function GlowButton({
 
   const variantClasses = {
     green:
-      "bg-[#39ff8c] text-black font-bold hover:glow-green hover:shadow-[0_0_20px_rgba(57,255,140,0.5),0_0_60px_rgba(57,255,140,0.2)] transition-all duration-300",
-    cyan: "bg-[#ff3ec8] text-black font-bold hover:shadow-[0_0_20px_rgba(255,62,200,0.5)] transition-all duration-300",
+      "bg-[#d4f5e0] text-black font-bold hover:glow-green hover:shadow-[0_0_20px_rgba(57,255,140,0.5),0_0_60px_rgba(57,255,140,0.2)] transition-all duration-300",
+    cyan: "bg-[#f5d6ed] text-black font-bold hover:shadow-[0_0_20px_rgba(255,62,200,0.5)] transition-all duration-300",
     outline:
-      "border border-[#39ff8c] text-[#39ff8c] font-semibold hover:bg-[#39ff8c] hover:text-black transition-all duration-300",
+      "border border-[#d4f5e0] text-[#d4f5e0] font-semibold hover:bg-[#d4f5e0] hover:text-black transition-all duration-300",
   };
 
   return (
@@ -47,3 +47,6 @@ export default function GlowButton({
     </a>
   );
 }
+
+
+

@@ -17,7 +17,7 @@ export default function Blueprint() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-[#39ff8c] uppercase tracking-widest mb-4">The Process</p>
+          <p className="font-mono text-xs text-[#d4f5e0] uppercase tracking-widest mb-4">The Process</p>
           <SectionHeading accent="pink">Build. Ship. Get Invited.</SectionHeading>
         </motion.div>
 
@@ -36,7 +36,7 @@ export default function Blueprint() {
             href={REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#39ff8c] text-black font-bold px-6 py-3 rounded-xl hover:bg-[#22d16f] transition-colors text-sm"
+            className="inline-flex items-center gap-2 bg-[#d4f5e0] text-black font-bold px-6 py-3 rounded-xl hover:bg-[#22d16f] transition-colors text-sm"
           >
             Register for the Next Night
             <ArrowRight size={15} />
@@ -46,3 +46,6 @@ export default function Blueprint() {
     </section>
   );
 }
+
+
+

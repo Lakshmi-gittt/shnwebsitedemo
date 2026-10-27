@@ -4,37 +4,52 @@ import { ArrowLeft } from "lucide-react";
 import { moments, MOMENTS_PLACEHOLDER_COUNT } from "@/lib/data";
 import MomentsScroller from "@/components/ui/MomentsScroller";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import GridBackdrop from "@/components/ui/GridBackdrop";
 
 export default function MomentsPage() {
   return (
-    <main
-      className="min-h-screen dark-grid-bg"
-      style={{ color: "#ffffff" }}
-    >
-      {/* Nav back */}
-      <div className="sticky top-0 z-50 border-b border-white/8 bg-[#000000]/90 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4">
+    <main className="min-h-screen bg-[#F5F4EE] text-[#111111] relative selection:bg-[#f5d6ed] selection:text-black">
+      <GridBackdrop />
+      <Navbar />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-20">
+        {/* Breadcrumb link */}
+        <div className="mb-8">
           <a
             href="/"
-            className="flex items-center gap-2 font-mono text-sm text-[#9a90b8] hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold text-[#111111]/70 hover:text-black hover:underline transition-colors"
           >
-            <ArrowLeft size={14} />
-            Back to SHN
+            <ArrowLeft size={14} strokeWidth={2} />
+            Back to Saturday Hack Night
           </a>
-          <span className="text-white/20">/</span>
-          <span className="font-mono text-sm text-white">Moments</span>
         </div>
+
+        {/* Page header */}
+        <div className="mb-14">
+          <p className="font-mono text-xs font-bold uppercase tracking-wider mb-3 bg-[#d0ecf8] text-black inline-block px-3 py-1 border border-black rounded shadow-sm">
+            The Builder Journey
+          </p>
+          <SectionHeading accent="green" as="h1" className="mb-4">
+            Moments
+          </SectionHeading>
+          <p className="text-black/75 font-normal text-lg max-w-2xl">
+            A visual chronicle of the energy, the late-night prototypes, the breakthroughs, and the community at Saturday Hack Night.
+          </p>
+        </div>
+
+        <MomentsScroller
+          photos={moments}
+          slotCount={MOMENTS_PLACEHOLDER_COUNT}
+          vhPerSlot={70}
+        />
       </div>
 
-      <div className="px-4 sm:px-6 pt-16 pb-10 max-w-6xl mx-auto">
-        <SectionHeading accent="green" as="h1">Moments</SectionHeading>
-      </div>
-
-      <MomentsScroller
-        photos={moments}
-        slotCount={MOMENTS_PLACEHOLDER_COUNT}
-        vhPerSlot={70}
-      />
+      <Footer />
     </main>
   );
 }
+
+
+

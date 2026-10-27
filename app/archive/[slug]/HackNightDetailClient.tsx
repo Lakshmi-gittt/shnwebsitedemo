@@ -18,6 +18,9 @@ import {
 } from "lucide-react";
 import type { PastHackNight, Project, Resource } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import GridBackdrop from "@/components/ui/GridBackdrop";
 
 const resourceIcons = {
   docs: BookOpen,
@@ -27,10 +30,17 @@ const resourceIcons = {
 };
 
 const difficultyColors = {
-  Beginner: { color: "#39ff8c", bg: "rgba(57,255,140,0.1)" },
-  Intermediate: { color: "#ff3ec8", bg: "rgba(255,62,200,0.1)" },
-  Advanced: { color: "#ff8fe0", bg: "rgba(255,143,224,0.1)" },
+  Beginner: { bg: "bg-[#d4f5e0]", text: "text-black" },
+  Intermediate: { bg: "bg-[#f5d6ed]", text: "text-black" },
+  Advanced: { bg: "bg-[#ffd34e]", text: "text-black" },
 };
+
+const projectCardPalettes = [
+  "bg-[#fae4f2]",
+  "bg-[#e0f4fb]",
+  "bg-[#e6f7e2]",
+  "bg-[#fde4cf]",
+];
 
 function ProjectCard({
   project,
@@ -41,33 +51,35 @@ function ProjectCard({
   index: number;
   isBest?: boolean;
 }) {
+  const cardBg = isBest ? "bg-[#fde4cf]" : projectCardPalettes[index % projectCardPalettes.length];
+
   return (
     <motion.div
-      className={`glass-card rounded-xl p-5 group relative overflow-hidden ${
-        isBest ? "border-[#39ff8c]/30 bg-[#39ff8c]/3" : ""
+      className={`rounded-xl border-2 border-black p-6 group relative overflow-hidden transition-all duration-200 ${cardBg} ${
+        isBest
+          ? "shadow-md border-2 border-black"
+          : "shadow-sm hover:shadow-md hover:-translate-y-0.5"
       }`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.07 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
       viewport={{ once: true }}
     >
       {isBest && (
-        <div className="flex items-center gap-1.5 mb-3">
-          <Star size={12} className="text-[#39ff8c]" />
-          <span className="font-mono text-xs text-[#39ff8c] uppercase tracking-wider">
-            Best Project
-          </span>
+        <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-[#ffd34e] text-black font-mono text-xs font-bold uppercase tracking-wider border border-black rounded shadow-sm">
+          <Star size={13} className="text-black stroke-[2]" />
+          Best Project of the Night
         </div>
       )}
 
-      <h3 className="font-bold text-white text-lg mb-1 leading-tight">
+      <h3 className="font-display font-bold text-black text-xl mb-1.5 leading-snug">
         {project.name}
       </h3>
 
       {/* Creator / team */}
-      <div className="flex items-center gap-1.5 text-[#9a90b8] mb-3">
-        <Users size={12} />
-        <span className="font-mono text-xs">
+      <div className="flex items-center gap-1.5 text-black/60 mb-3">
+        <Users size={13} className="stroke-[2]" />
+        <span className="font-mono text-xs font-medium">
           {project.team && project.team.length > 1
             ? project.team.join(", ")
             : `by ${project.creator}`}
@@ -76,17 +88,17 @@ function ProjectCard({
 
       {/* Description */}
       {project.description && (
-        <p className="text-sm text-[#9a90b8] leading-relaxed mb-4">
+        <p className="text-sm font-normal text-black/75 leading-relaxed mb-4">
           {project.description}
         </p>
       )}
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-1.5 mb-5">
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="font-mono text-xs bg-white/5 border border-white/8 rounded px-2 py-0.5 text-[#ff3ec8]"
+            className="font-mono text-xs font-semibold bg-[#fde4cf] border border-black/20 rounded px-2 py-0.5 text-black"
           >
             {tag}
           </span>
@@ -94,12 +106,12 @@ function ProjectCard({
       </div>
 
       {/* Links */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 pt-3 border-t border-black/15">
         <a
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 font-mono text-xs text-[#9a90b8] hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 font-mono text-xs font-bold bg-black text-white px-3 py-1.5 rounded-lg border border-black shadow-sm hover:bg-neutral-800 transition-colors"
           onClick={(e) => e.stopPropagation()}
         >
           <Github size={13} />
@@ -110,11 +122,11 @@ function ProjectCard({
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 font-mono text-xs text-[#9a90b8] hover:text-[#39ff8c] transition-colors"
+            className="inline-flex items-center gap-1.5 font-mono text-xs font-bold bg-[#fde4cf] text-black px-3 py-1.5 rounded-lg border border-black shadow-sm hover:bg-neutral-50 transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
-            <ExternalLink size={13} />
-            Live
+            <ExternalLink size={13} strokeWidth={2} />
+            Live Demo
           </a>
         )}
       </div>
@@ -127,48 +139,27 @@ export default function HackNightDetailClient({
 }: {
   night: PastHackNight;
 }) {
-  const diff = difficultyColors[night.difficulty];
+  const diff = difficultyColors[night.difficulty] || difficultyColors.Beginner;
   const otherProjects = night.allProjects.filter(
-    (p) => p.name !== night.bestProject.name
+    (p) => p.name !== night.bestProject?.name
   );
 
   return (
-    <main
-      className="min-h-screen dark-grid-bg"
-      style={{ color: "#ffffff" }}
-    >
-      {/* Top nav */}
-      <div className="sticky top-0 z-50 border-b border-white/8 bg-[#000000]/90 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4 font-mono text-sm text-[#9a90b8]">
-          <a
-            href="/"
-            className="hover:text-white transition-colors"
-          >
-            SHN
-          </a>
-          <span className="text-white/20">/</span>
+    <main className="min-h-screen bg-[#F5F4EE] text-[#111111] relative selection:bg-[#f5d6ed] selection:text-black">
+      <GridBackdrop />
+      <Navbar />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-20">
+        {/* Back Link */}
+        <div className="mb-8">
           <a
             href="/archive/"
-            className="hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold text-[#111111]/70 hover:text-black hover:underline transition-colors"
           >
-            Archive
+            <ArrowLeft size={14} strokeWidth={2} />
+            Back to All Hack Nights
           </a>
-          <span className="text-white/20">/</span>
-          <span className="text-white truncate">{night.theme}</span>
         </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-        {/* Back */}
-        <motion.a
-          href="/archive/"
-          className="inline-flex items-center gap-2 font-mono text-sm text-[#9a90b8] hover:text-white transition-colors mb-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <ArrowLeft size={14} />
-          All hack nights
-        </motion.a>
 
         {/* Hero header */}
         <motion.div
@@ -178,67 +169,69 @@ export default function HackNightDetailClient({
           transition={{ duration: 0.5 }}
         >
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="font-mono text-sm text-[#9a90b8]">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider bg-black text-white px-3 py-1 rounded border border-black shadow-sm">
               SHN #{String(night.id).padStart(3, "0")}
             </span>
             <span
-              className="font-mono text-xs px-2 py-0.5 rounded-full font-semibold"
-              style={{ color: diff.color, backgroundColor: diff.bg }}
+              className={`font-mono text-xs px-3 py-1 rounded font-bold uppercase tracking-wider border border-black shadow-sm ${diff.bg} ${diff.text}`}
             >
               {night.difficulty}
             </span>
           </div>
 
-          <SectionHeading accent="green" as="h1" className="mb-4">{night.theme}</SectionHeading>
+          <SectionHeading accent="green" as="h1" className="mb-6">
+            {night.theme}
+          </SectionHeading>
 
-          <div className="flex flex-wrap gap-5 text-[#9a90b8]">
-            <div className="flex items-center gap-2">
-              <CalendarDays size={14} />
-              <span className="font-mono text-sm">{night.date}</span>
+          <div className="flex flex-wrap gap-3 sm:gap-4 text-black font-mono font-medium text-xs sm:text-sm">
+            <div className="flex items-center gap-2 bg-[#fde4cf] px-3 py-1.5 rounded-lg border border-black shadow-sm">
+              <CalendarDays size={14} className="stroke-[2]" />
+              <span>{night.date}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Code2 size={14} />
-              <span className="font-mono text-sm">{night.stack}</span>
+            <div className="flex items-center gap-2 bg-[#e0f4fb] px-3 py-1.5 rounded-lg border border-black shadow-sm">
+              <Code2 size={14} className="stroke-[2]" />
+              <span>{night.stack}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Users size={14} />
-              <span className="font-mono text-sm">
-                {night.participants} builders
-              </span>
+            <div className="flex items-center gap-2 bg-[#e6f7e2] px-3 py-1.5 rounded-lg border border-black shadow-sm">
+              <Users size={14} strokeWidth={2} />
+              <span>{night.participants} builders</span>
             </div>
-            <div className="flex items-center gap-2">
-              <FolderGit2 size={14} />
-              <span className="font-mono text-sm">
-                {night.submittedCount} projects submitted
-              </span>
+            <div className="flex items-center gap-2 bg-[#fae4f2] px-3 py-1.5 rounded-lg border border-black shadow-sm">
+              <FolderGit2 size={14} strokeWidth={2} />
+              <span>{night.submittedCount} projects submitted</span>
             </div>
           </div>
         </motion.div>
 
-        {/* Best project — full width highlight */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Star size={18} className="text-[#39ff8c]" />
-            Best Project of the Night
-          </h2>
-          <ProjectCard project={night.bestProject} index={0} isBest />
-        </motion.div>
+        {/* Best project highlight */}
+        {night.bestProject && (
+          <motion.div
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            <div className="mb-3">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider bg-[#ffd34e] text-black px-2.5 py-1 border border-black rounded shadow-sm">
+                Highlighted Showcase
+              </span>
+            </div>
+            <ProjectCard project={night.bestProject} index={0} isBest />
+          </motion.div>
+        )}
 
         {/* About the theme */}
         {night.about && (
           <motion.div
-            className="mb-14"
+            className="mb-14 p-6 sm:p-7 bg-[#fae4f2] rounded-xl border-2 border-black shadow-sm"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-xl font-bold mb-4">About This Theme</h2>
-            <p className="text-[#9a90b8] leading-relaxed text-base max-w-3xl">
+            <h2 className="font-display font-bold text-xl sm:text-2xl text-black mb-2">
+              About This Theme
+            </h2>
+            <p className="text-black/80 font-normal leading-relaxed text-base sm:text-lg max-w-4xl">
               {night.about}
             </p>
           </motion.div>
@@ -252,30 +245,34 @@ export default function HackNightDetailClient({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-xl font-bold mb-6">Mentors</h2>
+            <h2 className="font-display font-bold text-xl sm:text-2xl text-black mb-5">
+              Mentors
+            </h2>
             <div className="flex flex-wrap gap-4">
               {night.mentors.map((mentor) => (
                 <div
                   key={mentor.name}
-                  className="glass-card rounded-xl p-4 flex items-center gap-4 min-w-[200px]"
+                  className="bg-[#e0f4fb] rounded-xl border-2 border-black p-4 flex items-center gap-4 min-w-[220px] shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#39ff8c]/10 border border-[#39ff8c]/20 flex items-center justify-center font-mono font-bold text-[#39ff8c]">
+                  <div className="w-11 h-11 rounded-full bg-[#f5d6ed] border border-black flex items-center justify-center font-mono font-bold text-black text-base shadow-sm">
                     {mentor.name[0]}
                   </div>
                   <div>
-                    <div className="font-semibold text-white text-sm">
+                    <div className="font-display font-bold text-black text-base">
                       {mentor.name}
                     </div>
-                    <div className="text-xs text-[#9a90b8]">{mentor.role}</div>
+                    <div className="font-mono text-xs text-black/60 font-medium">
+                      {mentor.role}
+                    </div>
                     <div className="flex items-center gap-3 mt-1.5">
                       {mentor.github && (
                         <a
                           href={`https://github.com/${mentor.github}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#9a90b8] hover:text-white transition-colors"
+                          className="text-black/60 hover:text-black transition-colors"
                         >
-                          <Github size={12} />
+                          <Github size={13} />
                         </a>
                       )}
                       {mentor.twitter && (
@@ -283,9 +280,9 @@ export default function HackNightDetailClient({
                           href={`https://twitter.com/${mentor.twitter}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#9a90b8] hover:text-[#ff3ec8] transition-colors"
+                          className="text-black/60 hover:text-[#f5d6ed] transition-colors"
                         >
-                          <Twitter size={12} />
+                          <Twitter size={13} />
                         </a>
                       )}
                     </div>
@@ -304,8 +301,10 @@ export default function HackNightDetailClient({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-xl font-bold mb-6">Resources</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <h2 className="font-display font-bold text-xl sm:text-2xl text-black mb-5">
+              Resources &amp; Starter Kits
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {night.resources.map((resource: Resource) => {
                 const Icon = resourceIcons[resource.type];
                 return (
@@ -314,20 +313,23 @@ export default function HackNightDetailClient({
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-card rounded-xl p-4 flex items-center gap-3 group hover:border-white/20 transition-all duration-300"
+                    className="bg-[#e6f7e2] rounded-xl border-2 border-black p-4 flex items-center gap-3 group shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-                      <Icon size={14} className="text-[#9a90b8] group-hover:text-[#39ff8c] transition-colors" />
+                    <div className="w-9 h-9 rounded-lg bg-[#fde4cf] border border-black flex items-center justify-center shrink-0">
+                      <Icon size={15} className="text-black stroke-[2]" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-sm font-medium text-white truncate group-hover:text-[#39ff8c] transition-colors">
+                      <div className="text-sm font-semibold text-black truncate group-hover:underline">
                         {resource.title}
                       </div>
-                      <div className="font-mono text-xs text-[#9a90b8] capitalize">
+                      <div className="font-mono text-xs font-medium text-black/60 capitalize">
                         {resource.type}
                       </div>
                     </div>
-                    <LinkIcon size={12} className="text-[#9a90b8] group-hover:text-[#39ff8c] shrink-0 transition-colors" />
+                    <LinkIcon
+                      size={13}
+                      className="text-black/40 group-hover:text-black shrink-0 transition-colors"
+                    />
                   </a>
                 );
               })}
@@ -337,14 +339,16 @@ export default function HackNightDetailClient({
 
         {/* All other submitted projects */}
         <div>
-          <motion.h2
-            className="text-xl font-bold mb-6 text-[#9a90b8]"
+          <motion.div
+            className="mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            All Submitted Projects ({night.allProjects.length})
-          </motion.h2>
+            <h2 className="font-display font-bold text-xl sm:text-2xl text-black">
+              All Submitted Projects ({night.allProjects.length})
+            </h2>
+          </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {otherProjects.map((project, i) => (
               <ProjectCard key={project.name} project={project} index={i} />
@@ -352,6 +356,11 @@ export default function HackNightDetailClient({
           </div>
         </div>
       </div>
+
+      <Footer />
     </main>
   );
 }
+
+
+

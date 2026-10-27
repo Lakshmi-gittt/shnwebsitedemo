@@ -4,9 +4,10 @@ import { ElementType, useRef } from "react";
 import { motion, useScroll, useTransform } from "@/lib/motion";
 
 const ACCENTS = {
-  green: { outline: "rgba(57,255,140,0.5)" },
-  pink: { outline: "rgba(255,62,200,0.5)" },
-  violet: { outline: "rgba(62,142,255,0.5)" },
+  green: { outline: "#111111" },
+  pink: { outline: "#111111" },
+  violet: { outline: "#111111" },
+  yellow: { outline: "#111111" },
 } as const;
 
 interface SectionHeadingProps {
@@ -52,7 +53,7 @@ export default function SectionHeading({
       <motion.div style={{ y: fallY, opacity: fadeIn }}>
         <Tag
           className={`font-display font-bold uppercase tracking-tight leading-[0.95] text-4xl sm:text-6xl lg:text-7xl ${className}`}
-          style={{ WebkitTextStroke: `1.5px ${outline}`, color: "transparent" }}
+          style={{ WebkitTextStroke: `1.5px ${outline}`, color: "#111111" }}
         >
           {children}
         </Tag>
@@ -60,3 +61,5 @@ export default function SectionHeading({
     </div>
   );
 }
+
+

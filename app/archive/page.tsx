@@ -3,20 +3,16 @@
 import { motion } from "@/lib/motion";
 import { ArrowRight, Star, Users, FolderGit2, ArrowLeft } from "lucide-react";
 import { pastHackNights } from "@/lib/data";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import GridBackdrop from "@/components/ui/GridBackdrop";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-const archivePalettes = [
-  { bg: "bg-[#ff3ec8]", badgeBg: "bg-white text-black" },
-  { bg: "bg-[#39ff8c]", badgeBg: "bg-white text-black" },
-  { bg: "bg-[#70d6ff]", badgeBg: "bg-white text-black" },
-  { bg: "bg-[#ffd166]", badgeBg: "bg-white text-black" },
-];
-
-const archiveRotations = [
-  "transform -rotate-1",
-  "transform rotate-1",
-  "transform -rotate-0.5",
-  "transform rotate-1.5",
+const archiveCardPalettes = [
+  { cardBg: "bg-[#fae4f2]", tagBg: "bg-[#f5d6ed]" },
+  { cardBg: "bg-[#e6f7e2]", tagBg: "bg-[#d4f5e0]" },
+  { cardBg: "bg-[#e0f4fb]", tagBg: "bg-[#aeeaf5]" },
+  { cardBg: "bg-[#fde4cf]", tagBg: "bg-[#ffd34e]" },
 ];
 
 export default function ArchivePage() {
@@ -30,26 +26,22 @@ export default function ArchivePage() {
   );
 
   return (
-    <main
-      className="min-h-screen pb-20"
-      style={{ backgroundColor: "#f5f4ee", color: "#000000" }}
-    >
-      {/* Nav back */}
-      <div className="sticky top-0 z-50 border-b-2 border-black bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4">
+    <main className="min-h-screen bg-[#F5F4EE] text-[#111111] relative selection:bg-[#f5d6ed] selection:text-black">
+      <GridBackdrop />
+      <Navbar />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-20">
+        {/* Breadcrumb link */}
+        <div className="mb-8">
           <a
             href="/"
-            className="flex items-center gap-2 font-mono text-sm font-bold text-black hover:underline"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold text-[#111111]/70 hover:text-black hover:underline transition-colors"
           >
-            <ArrowLeft size={16} strokeWidth={2.5} />
-            Back to SHN
+            <ArrowLeft size={14} strokeWidth={2} />
+            Back to Saturday Hack Night
           </a>
-          <span className="text-black/30">/</span>
-          <span className="font-mono text-sm font-extrabold text-black">Archive</span>
         </div>
-      </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         {/* Page header */}
         <motion.div
           className="mb-14"
@@ -57,39 +49,49 @@ export default function ArchivePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="font-mono text-xs font-extrabold uppercase tracking-widest mb-3 bg-[#ff3ec8] text-black inline-block px-3 py-1 border-2 border-black rounded shadow-[2px_2px_0px_0px_#000]">
+          <p className="font-mono text-xs font-bold uppercase tracking-wider mb-3 bg-[#f5d6ed] text-black inline-block px-3 py-1 border border-black rounded shadow-sm">
             Every Night. Every Project.
           </p>
-          <SectionHeading accent="pink" as="h1" className="mb-4">Past Hack Nights</SectionHeading>
-          <p className="text-neutral-800 font-medium text-lg max-w-xl">
+          <SectionHeading accent="pink" as="h1" className="mb-4">
+            Past Hack Nights
+          </SectionHeading>
+          <p className="text-black/75 font-normal text-lg max-w-xl">
             A record of every Saturday, every theme, and every project shipped
             by the SHN community.
           </p>
 
-          {/* Aggregate stats */}
+          {/* Aggregate stats in Lite Tones */}
           <div className="flex flex-wrap gap-4 sm:gap-6 mt-8">
             {[
               {
                 value: pastHackNights.length,
                 label: "Hack Nights",
-                bg: "bg-[#ff3ec8]",
+                cardBg: "bg-[#fae4f2]",
+                tagBg: "bg-[#f5d6ed]",
               },
               {
                 value: totalParticipants + "+",
                 label: "Builders",
-                bg: "bg-[#39ff8c]",
+                cardBg: "bg-[#e6f7e2]",
+                tagBg: "bg-[#d4f5e0]",
               },
               {
                 value: totalProjects + "+",
                 label: "Projects Shipped",
-                bg: "bg-[#70d6ff]",
+                cardBg: "bg-[#e0f4fb]",
+                tagBg: "bg-[#aeeaf5]",
               },
             ].map((stat) => (
-              <div key={stat.label} className={`${stat.bg} text-black border-[3px] border-black rounded-xl p-4 min-w-[140px] shadow-[3px_3px_0px_0px_#000]`}>
-                <div className="font-mono text-3xl font-black">
+              <div
+                key={stat.label}
+                className={`${stat.cardBg} text-black border-2 border-black rounded-xl p-4 sm:p-5 min-w-[150px] shadow-sm relative overflow-hidden`}
+              >
+                <div className="font-mono text-3xl sm:text-4xl font-bold">
                   {stat.value}
                 </div>
-                <div className="font-mono text-xs font-bold uppercase tracking-wider mt-0.5">{stat.label}</div>
+                <div className="font-mono text-xs font-bold text-black/70 uppercase tracking-wider mt-1">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -98,20 +100,19 @@ export default function ArchivePage() {
         {/* Hack night cards */}
         <div className="space-y-6">
           {pastHackNights.map((night, i) => {
-            const palette = archivePalettes[i % archivePalettes.length];
-            const rotation = archiveRotations[i % archiveRotations.length];
+            const palette = archiveCardPalettes[i % archiveCardPalettes.length];
             return (
               <motion.a
                 key={night.slug}
                 href={`/archive/${night.slug}/`}
-                className={`rounded-2xl border-[3px] border-black ${palette.bg} text-black p-6 sm:p-8 flex flex-col sm:flex-row gap-6 group shadow-[5px_5px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0px_0px_#000] transition-all duration-200 block ${rotation}`}
-                initial={{ opacity: 0, y: 24 }}
+                className={`rounded-xl border-2 border-black ${palette.cardBg} text-black p-6 sm:p-7 flex flex-col sm:flex-row gap-6 group shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 block`}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
               >
                 {/* Left: Number */}
                 <div className="shrink-0">
-                  <div className="font-mono text-4xl sm:text-5xl font-black text-black leading-none w-20">
+                  <div className="font-mono text-3xl sm:text-4xl font-bold text-black/40 leading-none w-16">
                     #{String(night.id).padStart(3, "0")}
                   </div>
                 </div>
@@ -119,30 +120,37 @@ export default function ArchivePage() {
                 {/* Center: Details */}
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h2 className="font-display text-2xl sm:text-3xl font-black text-black">
+                    <h2 className="font-display text-xl sm:text-2xl font-bold text-black group-hover:text-black/80">
                       {night.theme}
                     </h2>
-                    <span className="font-mono text-xs px-2.5 py-0.5 rounded font-black uppercase tracking-wider bg-black text-white border border-black">
+                    <span className={`font-mono text-xs px-2.5 py-0.5 rounded font-semibold uppercase tracking-wider ${palette.tagBg} text-black border border-black/40`}>
                       {night.difficulty}
                     </span>
                   </div>
 
-                  <div className="flex flex-wrap gap-3 mb-4 font-mono text-xs font-bold text-black/80">
-                    <span className="bg-white/70 px-2 py-0.5 rounded border border-black">{night.date}</span>
-                    <span className="bg-white/70 px-2 py-0.5 rounded border border-black">{night.stack}</span>
+                  <div className="flex flex-wrap gap-2.5 mb-4 font-mono text-xs font-medium text-black/70">
+                    <span className="bg-[#fde4cf] px-2 py-0.5 rounded border border-black/20">
+                      {night.date}
+                    </span>
+                    <span className="bg-[#fde4cf] px-2 py-0.5 rounded border border-black/20">
+                      {night.stack}
+                    </span>
                   </div>
 
                   {/* Best project preview */}
-                  <div className={`flex items-start gap-2.5 p-3.5 rounded-xl border-2 border-black mb-4 max-w-lg shadow-[2px_2px_0px_0px_#000] ${palette.badgeBg}`}>
-                    <Star size={14} className="text-black mt-0.5 shrink-0 stroke-[2.5]" />
+                  <div className="flex items-start gap-2.5 p-3 rounded-lg border border-black/20 bg-[#fde4cf] mb-4 max-w-lg">
+                    <Star
+                      size={14}
+                      className="text-black/70 mt-0.5 shrink-0 stroke-[2]"
+                    />
                     <div className="min-w-0">
-                      <p className="font-mono text-[10px] font-black text-black mb-0.5 uppercase tracking-widest">
+                      <p className="font-mono text-[10px] font-bold text-black/60 mb-0.5 uppercase tracking-wider">
                         Best Project
                       </p>
-                      <p className="font-extrabold text-black text-sm truncate">
+                      <p className="font-semibold text-black text-sm truncate">
                         {night.bestProject.name}
                       </p>
-                      <p className="font-mono text-xs font-bold text-black/70">
+                      <p className="font-mono text-xs text-black/70 font-normal">
                         {night.bestProject.description}
                       </p>
                     </div>
@@ -150,12 +158,12 @@ export default function ArchivePage() {
 
                   {/* Stats */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex items-center gap-1.5 bg-white border border-black px-2 py-1 rounded text-black font-mono text-xs font-bold">
-                      <Users size={13} strokeWidth={2.5} />
+                    <div className="flex items-center gap-1.5 bg-[#fde4cf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
+                      <Users size={13} strokeWidth={2} />
                       <span>{night.participants} builders</span>
                     </div>
-                    <div className="flex items-center gap-1.5 bg-white border border-black px-2 py-1 rounded text-black font-mono text-xs font-bold">
-                      <FolderGit2 size={13} strokeWidth={2.5} />
+                    <div className="flex items-center gap-1.5 bg-[#fde4cf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
+                      <FolderGit2 size={13} strokeWidth={2} />
                       <span>{night.submittedCount} projects submitted</span>
                     </div>
                   </div>
@@ -163,9 +171,9 @@ export default function ArchivePage() {
 
                 {/* Right: CTA */}
                 <div className="shrink-0 flex items-center">
-                  <div className="flex items-center gap-2 font-mono text-xs font-black bg-black text-white px-4 py-2.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_#000] group-hover:translate-x-0.5 transition-all">
+                  <div className="flex items-center gap-2 font-mono text-xs font-bold bg-black text-white px-4 py-2 rounded-lg border border-black shadow-sm group-hover:bg-neutral-800 transition-colors">
                     <span>View projects</span>
-                    <ArrowRight size={14} strokeWidth={2.5} />
+                    <ArrowRight size={13} strokeWidth={2} />
                   </div>
                 </div>
               </motion.a>
@@ -173,6 +181,12 @@ export default function ArchivePage() {
           })}
         </div>
       </div>
+
+      <Footer />
     </main>
   );
 }
+
+
+
+

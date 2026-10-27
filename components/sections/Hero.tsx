@@ -61,7 +61,7 @@ export default function Hero() {
                 delay: 3.3,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="absolute inset-0 bg-[#F28AD8] -z-0 origin-left rounded-[2px]"
+              className="absolute inset-0 bg-[#f5d6ed] -z-0 origin-left rounded-[2px]"
               aria-hidden="true"
             />
 
@@ -124,32 +124,32 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="bg-white border-[3px] border-black rounded-2xl p-4 sm:p-6 shadow-[5px_5px_0px_0px_#000] max-w-xl w-full mb-10 text-left relative"
+          className="bg-[#e6f7e2] border-2 border-black rounded-xl p-4 sm:p-6 shadow-sm max-w-xl w-full mb-10 text-left relative"
         >
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3 mb-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-3 mb-3">
             <div>
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-500 block">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-black/60 block">
                 NEXT HACK NIGHT
               </span>
-              <h2 className="text-xl sm:text-2xl font-black text-black">{nextNight.theme}</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-black">{nextNight.theme}</h2>
             </div>
-            <span className="bg-[#39ff8c] text-black font-mono text-xs font-extrabold px-3 py-1 border-2 border-black rounded-lg">
+            <span className="bg-[#d4f5e0] text-black font-mono text-xs font-bold px-3 py-1 border border-black rounded-lg">
               {nextNight.date} · 6 PM
             </span>
           </div>
 
           <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-            <div className="bg-neutral-100 p-2 border border-black rounded-lg">
-              <span className="text-neutral-500 text-[9px] block uppercase font-bold">Stack</span>
-              <span className="font-extrabold text-black">{nextNight.stack}</span>
+            <div className="bg-[#fde4cf] p-2 border border-black/20 rounded-lg">
+              <span className="text-black/50 text-[9px] block uppercase font-medium">Stack</span>
+              <span className="font-bold text-black">{nextNight.stack}</span>
             </div>
-            <div className="bg-neutral-100 p-2 border border-black rounded-lg">
-              <span className="text-neutral-500 text-[9px] block uppercase font-bold">Difficulty</span>
-              <span className="font-extrabold text-black">{nextNight.difficulty}</span>
+            <div className="bg-[#fde4cf] p-2 border border-black/20 rounded-lg">
+              <span className="text-black/50 text-[9px] block uppercase font-medium">Difficulty</span>
+              <span className="font-bold text-black">{nextNight.difficulty}</span>
             </div>
-            <div className="bg-neutral-100 p-2 border border-black rounded-lg">
-              <span className="text-neutral-500 text-[9px] block uppercase font-bold">Format</span>
-              <span className="font-extrabold text-black">Solo / Team</span>
+            <div className="bg-[#fde4cf] p-2 border border-black/20 rounded-lg">
+              <span className="text-black/50 text-[9px] block uppercase font-medium">Format</span>
+              <span className="font-bold text-black">Solo / Team</span>
             </div>
           </div>
         </motion.div>
@@ -165,14 +165,14 @@ export default function Hero() {
             href={REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-[#39ff8c] text-black font-extrabold text-lg px-8 py-4 rounded-xl border-[3px] border-black shadow-[4px_4px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 bg-[#d4f5e0] text-black font-bold text-base px-8 py-3.5 rounded-xl border-2 border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-150"
           >
             Join Hack Night
-            <ArrowRight size={20} strokeWidth={3} />
+            <ArrowRight size={18} strokeWidth={2.5} />
           </a>
           <a
             href="#get-selected"
-            className="inline-flex items-center justify-center gap-2 bg-white text-black font-extrabold text-lg px-8 py-4 rounded-xl border-[3px] border-black shadow-[4px_4px_0px_0px_#000] hover:bg-neutral-100 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 bg-[#fde4cf] text-black font-bold text-base px-8 py-3.5 rounded-xl border-2 border-black shadow-sm hover:bg-neutral-50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-150"
           >
             How it works
           </a>
@@ -191,3 +191,6 @@ export default function Hero() {
     </section>
   );
 }
+
+
+

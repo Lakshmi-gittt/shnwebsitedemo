@@ -27,7 +27,7 @@ function ProjectCard({ project, featured, index }: ProjectCardProps) {
       viewport={{ once: true }}
     >
       {/* Hover overlay */}
-      <div className="absolute inset-0 bg-[#39ff8c]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+      <div className="absolute inset-0 bg-[#d4f5e0]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
 
       {/* Content */}
       <div className="relative z-10">
@@ -47,7 +47,7 @@ function ProjectCard({ project, featured, index }: ProjectCardProps) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-xs bg-white/5 border border-white/8 rounded px-2 py-0.5 text-[#ff3ec8]"
+              className="font-mono text-xs bg-[#fde4cf] border border-white/8 rounded px-2 py-0.5 text-[#f5d6ed]"
             >
               {tag}
             </span>
@@ -60,7 +60,7 @@ function ProjectCard({ project, featured, index }: ProjectCardProps) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-sm text-[#39ff8c] hover:underline"
+            className="inline-flex items-center gap-2 font-mono text-sm text-[#d4f5e0] hover:underline"
             onClick={(e) => e.stopPropagation()}
           >
             <ExternalLink size={14} />
@@ -74,7 +74,7 @@ function ProjectCard({ project, featured, index }: ProjectCardProps) {
         className="absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
         style={{
           background:
-            "radial-gradient(circle at top right, #39ff8c, transparent)",
+            "radial-gradient(circle at top right, #d4f5e0, transparent)",
         }}
       />
     </motion.div>
@@ -106,3 +106,7 @@ export default function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
     </>
   );
 }
+
+
+
+

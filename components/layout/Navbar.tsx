@@ -5,12 +5,12 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { REGISTER_URL } from "@/lib/data";
 
 const navLinks = [
-  { label: "How It Works", href: "#get-selected" },
-  { label: "Timeline", href: "#timeline" },
+  { label: "How It Works", href: "/#get-selected" },
+  { label: "Timeline", href: "/#timeline" },
   { label: "Past Nights", href: "/archive/" },
   { label: "Moments", href: "/moments/" },
   { label: "Campus", href: "/campus/" },
-  { label: "Community", href: "#community" },
+  { label: "Community", href: "/#community" },
 ];
 
 export default function Navbar() {
@@ -50,7 +50,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2.5 group">
+          <a href="/" className="flex items-center gap-2.5 group">
             <span className="w-3 h-3 bg-pink border-2 border-[var(--ink)] shrink-0" />
             <span className="font-display text-sm sm:text-lg font-bold text-[var(--ink)] tracking-tight whitespace-nowrap">
               SATURDAY HACK NIGHT
@@ -131,3 +131,5 @@ export default function Navbar() {
     </>
   );
 }
+
+

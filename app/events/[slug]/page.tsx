@@ -16,3 +16,4 @@ export default async function EventPage({ params }: PageProps) {
   if (!night) notFound();
   return <EventDetailClient night={night} />;
 }
+

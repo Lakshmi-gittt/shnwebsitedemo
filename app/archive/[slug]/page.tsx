@@ -16,3 +16,4 @@ export default async function HackNightPage({ params }: PageProps) {
   if (!night) notFound();
   return <HackNightDetailClient night={night} />;
 }
+

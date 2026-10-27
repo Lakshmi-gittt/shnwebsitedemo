@@ -39,7 +39,7 @@ export default function TerminalBox({
   return (
     <div className="glass-card rounded-xl overflow-hidden font-mono text-sm w-full max-w-xl mx-auto">
       {/* Terminal chrome */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/8">
+      <div className="flex items-center gap-2 px-4 py-3 bg-[#fde4cf] border-b border-white/8">
         <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
         <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
         <span className="w-3 h-3 rounded-full bg-[#28c840]" />
@@ -50,10 +50,10 @@ export default function TerminalBox({
       <div className="p-6 space-y-3">
         {/* Command line */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-[#39ff8c]">{prompt}</span>
+          <span className="text-[#d4f5e0]">{prompt}</span>
           <span className="text-white">{displayed}</span>
           {!done && (
-            <span className="inline-block w-2 h-4 bg-[#39ff8c] animate-pulse" />
+            <span className="inline-block w-2 h-4 bg-[#d4f5e0] animate-pulse" />
           )}
         </div>
 
@@ -63,7 +63,7 @@ export default function TerminalBox({
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="text-[#39ff8c] text-xs"
+            className="text-[#d4f5e0] text-xs"
           >
             ✓ {successMessage}
           </motion.div>
@@ -72,3 +72,7 @@ export default function TerminalBox({
     </div>
   );
 }
+
+
+
+

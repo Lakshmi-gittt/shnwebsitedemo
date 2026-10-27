@@ -91,7 +91,7 @@ const previousThemes = pastHackNights.map((n) => ({
 
 export default function CampusPage() {
   return (
-    <main className="min-h-screen bg-[#F5F4EE] text-[#111111] relative selection:bg-[#F28AD8] selection:text-black">
+    <main className="min-h-screen bg-[#F5F4EE] text-[#111111] relative selection:bg-[#f5d6ed] selection:text-black">
       {/* Subtle paper grid backdrop */}
       <GridBackdrop />
 
@@ -112,7 +112,7 @@ export default function CampusPage() {
 
         {/* Hero Section */}
         <header className="mb-14">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-4">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-4">
             Campus Edition
           </p>
           <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-[#111111] tracking-[-0.03em] leading-[0.95] mb-8">
@@ -138,7 +138,7 @@ export default function CampusPage() {
         <div className="py-10 border-y-2 border-black grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <div>
             <div className="font-display font-bold text-5xl sm:text-6xl text-[#111111] leading-none mb-2">
-              120<span className="text-[#F28AD8]">+</span>
+              120<span className="text-[#f5d6ed]">+</span>
             </div>
             <div className="font-mono text-xs uppercase tracking-widest text-[#111111]/70 font-bold">
               Students
@@ -154,7 +154,7 @@ export default function CampusPage() {
           </div>
           <div>
             <div className="font-display font-bold text-5xl sm:text-6xl text-[#111111] leading-none mb-2">
-              24<span className="text-[#91E47A]">H</span>
+              24<span className="text-[#d4f5e0]">H</span>
             </div>
             <div className="font-mono text-xs uppercase tracking-widest text-[#111111]/70 font-bold">
               Final Hackathon
@@ -172,7 +172,7 @@ export default function CampusPage() {
 
         {/* Section: WHAT IS SHN AT CAMPUS? */}
         <section className="mb-16">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
             01 / Overview
           </p>
           <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-6">
@@ -196,7 +196,7 @@ export default function CampusPage() {
 
         {/* Section: WHO CAN PARTICIPATE? */}
         <section className="mb-16">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
             02 / Eligibility
           </p>
           <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-6">
@@ -221,7 +221,7 @@ export default function CampusPage() {
                 an ambitious concept solo.
               </p>
             </div>
-            <div className="border-l-2 border-[#F28AD8] pl-5">
+            <div className="border-l-2 border-[#f5d6ed] pl-5">
               <div className="font-display font-bold text-xl text-[#111111] mb-1">
                 Team of Two
               </div>
@@ -238,7 +238,7 @@ export default function CampusPage() {
 
         {/* Section: HOW IT WORKS */}
         <section className="mb-16">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
             03 / Process
           </p>
           <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-8">
@@ -270,7 +270,7 @@ export default function CampusPage() {
 
         {/* Section: WHAT YOU NEED TO HOST */}
         <section className="mb-16">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
             04 / Requirements
           </p>
           <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-8">
@@ -305,7 +305,7 @@ export default function CampusPage() {
 
         {/* Section: WHAT HAPPENS AT THE CAMPUS? */}
         <section className="mb-16">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
             05 / The Flow
           </p>
           <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-6">
@@ -313,7 +313,7 @@ export default function CampusPage() {
           </h2>
           <div className="space-y-5 text-base sm:text-lg font-sans font-medium text-[#111111]/85 leading-relaxed max-w-3xl">
             <div className="flex gap-4 items-baseline">
-              <span className="font-mono text-sm font-black text-black bg-[#91E47A] px-2 py-0.5 rounded border border-black shrink-0">
+              <span className="font-mono text-sm font-black text-black bg-[#d4f5e0] px-2 py-0.5 rounded border border-black shrink-0">
                 6:00 PM IST
               </span>
               <p>
@@ -341,7 +341,7 @@ export default function CampusPage() {
               </p>
             </div>
             <div className="flex gap-4 items-baseline">
-              <span className="font-mono text-sm font-black text-black bg-[#F28AD8] px-2 py-0.5 rounded border border-black shrink-0">
+              <span className="font-mono text-sm font-black text-black bg-[#f5d6ed] px-2 py-0.5 rounded border border-black shrink-0">
                 MIDNIGHT
               </span>
               <p>
@@ -358,7 +358,7 @@ export default function CampusPage() {
         <section className="mb-16">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
             <div>
-              <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+              <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
                 06 / Archive
               </p>
               <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase">
@@ -367,7 +367,7 @@ export default function CampusPage() {
             </div>
             <a
               href="/archive/"
-              className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider font-bold text-[#111111] hover:text-[#F28AD8] transition-colors"
+              className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider font-bold text-[#111111] hover:text-[#f5d6ed] transition-colors"
             >
               All hack nights <ArrowRight size={13} strokeWidth={2.5} />
             </a>
@@ -381,7 +381,7 @@ export default function CampusPage() {
                 className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-black/[0.03] transition-colors px-2 -mx-2"
               >
                 <div>
-                  <div className="font-display font-bold text-xl text-[#111111] group-hover:text-[#F28AD8] transition-colors">
+                  <div className="font-display font-bold text-xl text-[#111111] group-hover:text-[#f5d6ed] transition-colors">
                     {t.theme}
                   </div>
                   <div className="font-mono text-xs text-[#111111]/70 font-semibold mt-0.5">
@@ -405,7 +405,7 @@ export default function CampusPage() {
 
         {/* Section: CAMPUS COMMUNITY & TINKERHUB CHAPTER */}
         <section className="mb-16">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-2">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-2">
             07 / Community
           </p>
           <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-6">
@@ -430,7 +430,7 @@ export default function CampusPage() {
 
         {/* Section: READY? CTA */}
         <section className="pt-4 pb-12">
-          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#F28AD8] mb-3">
+          <p className="font-mono font-bold text-xs uppercase tracking-widest text-[#f5d6ed] mb-3">
             08 / Host With Us
           </p>
           <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-[#111111] tracking-[-0.02em] leading-tight uppercase mb-6">
@@ -446,16 +446,16 @@ export default function CampusPage() {
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-[#F28AD8] text-black font-mono font-black text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg border-2 border-black shadow-[3px_3px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_#000] transition-all"
+              className="inline-flex items-center gap-2.5 bg-[#f5d6ed] text-black font-mono font-black text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg border-2 border-black shadow-[3px_3px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_#000] transition-all"
             >
               <MessageSquare size={16} strokeWidth={2.5} />
               Reach out on Discord
             </a>
             <a
               href="mailto:hello@tinkerhub.org"
-              className="inline-flex items-center gap-2.5 bg-white text-black font-mono font-black text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg border-2 border-black shadow-[3px_3px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_#000] transition-all"
+              className="inline-flex items-center gap-2.5 bg-[#fde4cf] text-black font-mono font-bold text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg border-2 border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
-              <Mail size={16} strokeWidth={2.5} />
+              <Mail size={16} strokeWidth={2} />
               Email Us
             </a>
           </div>
@@ -464,3 +464,7 @@ export default function CampusPage() {
     </main>
   );
 }
+
+
+
+

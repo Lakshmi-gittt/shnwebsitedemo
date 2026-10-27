@@ -18,20 +18,20 @@ export default function Moments() {
           viewport={{ once: true }}
         >
           <div>
-            <p className="font-mono text-xs text-black font-extrabold uppercase tracking-widest mb-3 bg-[#39ff8c] inline-block px-3 py-1 border-2 border-black rounded shadow-[2px_2px_0px_0px_#000]">
+            <p className="font-mono text-xs text-black font-bold uppercase tracking-wider mb-3 bg-[#d4f5e0] inline-block px-3 py-1 border border-black rounded shadow-sm">
               Event Archive
             </p>
             <SectionHeading accent="violet" className="mb-2">Moments</SectionHeading>
-            <p className="text-neutral-800 font-medium text-lg max-w-xl">
+            <p className="text-black/75 font-normal text-lg max-w-xl">
               Photographic memory of Saturday nights, build sprints, and TinkerSpace Kochi.
             </p>
           </div>
           <a
             href="/moments/"
-            className="inline-flex items-center gap-2 font-mono text-sm font-extrabold text-black bg-white border-[3px] border-black px-6 py-3.5 rounded-xl shadow-[4px_4px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000] transition-all shrink-0"
+            className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-black bg-[#fde4cf] border-2 border-black px-5 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all shrink-0"
           >
             View all moments
-            <ArrowRight size={16} strokeWidth={2.5} />
+            <ArrowRight size={14} strokeWidth={2} />
           </a>
         </motion.div>
       </div>
@@ -40,3 +40,7 @@ export default function Moments() {
     </section>
   );
 }
+
+
+
+

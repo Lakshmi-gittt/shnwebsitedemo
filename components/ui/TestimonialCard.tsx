@@ -10,12 +10,11 @@ interface TestimonialCardProps {
   className?: string;
 }
 
-const posterPalettes = [
-  { bg: "bg-[#ff3ec8]", rotation: "transform -rotate-1" },
-  { bg: "bg-[#39ff8c]", rotation: "transform rotate-1" },
-  { bg: "bg-[#70d6ff]", rotation: "transform -rotate-0.5" },
-  { bg: "bg-[#ffd166]", rotation: "transform rotate-1.5" },
-  { bg: "bg-white", rotation: "transform -rotate-1" },
+const litePalettes = [
+  { cardBg: "bg-[#fae4f2]", quoteColor: "text-[#d63384]" },
+  { cardBg: "bg-[#e6f7e2]", quoteColor: "text-[#198754]" },
+  { cardBg: "bg-[#e0f4fb]", quoteColor: "text-[#0284c7]" },
+  { cardBg: "bg-[#fde4cf]", quoteColor: "text-[#b45309]" },
 ];
 
 export default function TestimonialCard({
@@ -23,30 +22,34 @@ export default function TestimonialCard({
   index,
   className,
 }: TestimonialCardProps) {
-  const palette = posterPalettes[index % posterPalettes.length];
+  const palette = litePalettes[index % litePalettes.length];
 
   return (
     <motion.div
       className={cn(
-        `rounded-xl sm:rounded-2xl border-[3px] sm:border-[4px] border-black ${palette.bg} text-black p-6 sm:p-8 shadow-[5px_5px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0px_0px_#000] transition-all duration-200 ${palette.rotation} break-inside-avoid`,
+        `rounded-xl border-2 border-black ${palette.cardBg} text-black p-6 sm:p-7 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 break-inside-avoid`,
         className
       )}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
       viewport={{ once: true }}
     >
-      <span className="font-display font-black text-5xl sm:text-6xl text-black leading-none block mb-2 opacity-80">
+      <span className={cn("font-serif text-5xl leading-none block mb-1 font-bold", palette.quoteColor)}>
         &ldquo;
       </span>
-      <p className="font-display text-lg sm:text-xl font-black text-black leading-snug mb-5">
+      <p className="font-sans text-base sm:text-lg font-medium text-black/90 leading-relaxed mb-6">
         {testimonial.quote}
       </p>
-      <div className="pt-3 border-t-2 border-black inline-block">
-        <span className="font-mono text-xs font-black uppercase tracking-wider bg-black text-white px-3 py-1 rounded border border-black inline-block shadow-[2px_2px_0px_0px_#000]">
+      <div className="pt-3 border-t border-black/15 flex items-center justify-between">
+        <span className="font-mono text-xs font-bold text-black/75">
           — {testimonial.name}
         </span>
+        <span className="w-2 h-2 rounded-full bg-black/30" />
       </div>
     </motion.div>
   );
 }
+
+
+

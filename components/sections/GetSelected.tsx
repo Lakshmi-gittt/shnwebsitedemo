@@ -9,32 +9,28 @@ const steps = [
     step: "01",
     title: "Register & Attend",
     description: "Show up on Saturday at 6 PM IST — online, no travel needed. Free and open to all builders.",
-    bg: "bg-[#ff3ec8]",
-    rotation: "transform -rotate-1",
+    bg: "bg-[#f5d6ed]",
   },
   {
     icon: Users,
     step: "02",
     title: "Build Solo or in Pair",
     description: "Max 2 per team. Any language, framework, hardware, or API. Stack suggestions are starting points.",
-    bg: "bg-[#70d6ff]",
-    rotation: "transform rotate-1",
+    bg: "bg-[#d0ecf8]",
   },
   {
     icon: Code2,
     step: "03",
     title: "Ship & Push Code",
     description: "Build something real, push code to GitHub before midnight, and submit your project proof.",
-    bg: "bg-[#39ff8c]",
-    rotation: "transform -rotate-0.5",
+    bg: "bg-[#d4f5e0]",
   },
   {
     icon: Trophy,
     step: "04",
     title: "Get Invited to Finale",
     description: "Top teams from the 5 online build sprints get direct invitations to the 24-hour in-person hackathon at TinkerSpace Kochi.",
-    bg: "bg-[#ffd166]",
-    rotation: "transform rotate-1.5",
+    bg: "bg-[#fde4cf]",
   },
 ];
 
@@ -47,7 +43,7 @@ export default function GetSelected() {
         heading={
           <>
             Build. Ship.{" "}
-            <span className="text-[#ff3ec8]">Get Invited.</span>
+            <span className="text-black">Get Invited.</span>
           </>
         }
         subtext="There is no jury during the hack night. Just build something real, push it to GitHub, and let your project speak for itself."
@@ -55,3 +51,7 @@ export default function GetSelected() {
     </section>
   );
 }
+
+
+
+
