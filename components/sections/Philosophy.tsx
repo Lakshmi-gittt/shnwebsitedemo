@@ -14,7 +14,7 @@ export default function Philosophy() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-black/60 font-bold uppercase tracking-widest mb-4">Our Philosophy</p>
+          <p className="font-mono text-xs font-bold text-black uppercase tracking-wider bg-[#f5d6ed] inline-block px-3 py-1 mb-4 border border-black rounded shadow-sm">Our Philosophy</p>
           <h2 className="font-display font-black uppercase tracking-tight text-4xl sm:text-6xl lg:text-7xl text-black leading-[0.95]">
             Learn by <span className="text-black">Doing</span>
           </h2>

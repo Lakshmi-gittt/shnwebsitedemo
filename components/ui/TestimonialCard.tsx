@@ -14,7 +14,7 @@ const litePalettes = [
   { cardBg: "bg-[#fae4f2]", quoteColor: "text-[#d63384]" },
   { cardBg: "bg-[#e6f7e2]", quoteColor: "text-[#198754]" },
   { cardBg: "bg-[#e0f4fb]", quoteColor: "text-[#0284c7]" },
-  { cardBg: "bg-[#fde4cf]", quoteColor: "text-[#b45309]" },
+  { cardBg: "bg-[#fff6bf]", quoteColor: "text-[#b45309]" },
 ];
 
 export default function TestimonialCard({

@@ -18,7 +18,7 @@ export default function Timeline() {
           viewport={{ once: true }}
         >
           <div>
-            <p className="font-mono text-xs font-bold text-black uppercase tracking-wider mb-3 bg-[#fde4cf] inline-block px-3 py-1 border border-black rounded shadow-sm">
+            <p className="font-mono text-xs font-bold text-black uppercase tracking-wider mb-3 bg-[#fff6bf] inline-block px-3 py-1 border border-black rounded shadow-sm">
               Season 02 · 2026
             </p>
             <SectionHeading accent="green">Upcoming Hack Nights</SectionHeading>
@@ -28,7 +28,7 @@ export default function Timeline() {
               {["Free", "Solo or 2", "Any stack", "Push by midnight"].map((t) => (
                 <span
                   key={t}
-                  className="font-mono text-xs font-medium border border-black/20 text-black/70 bg-[#fde4cf] px-2.5 py-1 rounded"
+                  className="font-mono text-xs font-medium border border-black/20 text-black/70 bg-[#fff6bf] px-2.5 py-1 rounded"
                 >
                   {t}
                 </span>

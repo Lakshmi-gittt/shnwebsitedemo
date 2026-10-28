@@ -26,7 +26,10 @@ export interface HackNight {
   slug: string;
   theme: string;
   date: string;
-  isoDate: string; // for countdown targeting
+  isoDate: string; // start time, for countdown targeting
+  endIsoDate?: string; // end time; defaults to start + 5 hours
+  mode?: string; // e.g. "Online"
+  locked?: boolean; // locked nights are shown but cannot be opened
   stack: string;
   difficulty: "Beginner" | "Intermediate" | "Advanced";
   about: string;
@@ -66,55 +69,30 @@ export interface FaqItem {
 export const upcomingNights: HackNight[] = [
   {
     id: 1,
-    slug: "shn-s2-001-agentic-web",
-    theme: "The Agentic Web",
-    date: "March 14, 2026",
-    isoDate: "2026-03-14T12:30:00Z", // 6:00 PM IST = 12:30 UTC
-    stack: "LangChain, Next.js",
-    difficulty: "Intermediate",
+    slug: "shn-s2-001-beyond-gesture",
+    theme: "Beyond Gesture",
+    date: "October 31, 2026",
+    isoDate: "2026-10-31T12:30:00Z", // 6:00 PM IST = 12:30 UTC
+    endIsoDate: "2026-10-31T17:30:00Z", // 11:00 PM IST = 17:30 UTC
+    mode: "Online",
+    stack: "MediaPipe",
+    difficulty: "Beginner",
     about:
-      "AI agents don't just answer questions — they take actions, call APIs, browse the web, and chain decisions together. This hack night is about building something that acts on your behalf: a research agent, a coding assistant, a task automator.",
+      "Your hands are the interface. MediaPipe tracks hands, faces and body pose straight from a webcam, with no model training needed. This hack night is about going beyond the mouse and keyboard and building something you control with gestures.",
     challenge:
-      "Build a working AI agent that takes a goal as input and completes at least one multi-step task autonomously. Push to GitHub by midnight.",
+      "Build a working gesture-controlled project with MediaPipe, such as a touchless game, a hand-controlled slideshow or a gesture-driven drawing app. Push to GitHub by midnight.",
     mentors: [
       {
-        name: "Nithish Raj",
-        role: "AI Engineer, LLM applications",
-        github: "nithishraj",
-        twitter: "nithishraj",
-      },
-      {
-        name: "Sherin Thomas",
-        role: "Full-stack developer, agentic systems",
-        github: "sherinthomas",
+        name: "Joseph Shibu",
+        role: "Mentor",
       },
     ],
-    starterResources: [
-      {
-        title: "LangChain Quickstart",
-        url: "https://python.langchain.com/docs/get_started/quickstart",
-        type: "docs",
-      },
-      {
-        title: "Build an AI Agent from Scratch — YouTube",
-        url: "https://www.youtube.com/results?search_query=build+ai+agent+langchain",
-        type: "video",
-      },
-      {
-        title: "LangGraph — Stateful agent framework",
-        url: "https://langchain-ai.github.io/langgraph/",
-        type: "docs",
-      },
-      {
-        title: "Next.js AI SDK by Vercel",
-        url: "https://sdk.vercel.ai/docs",
-        type: "docs",
-      },
-    ],
+    starterResources: [],
   },
   {
     id: 2,
     slug: "shn-s2-002-creative-coding",
+    locked: true,
     theme: "Creative Coding",
     date: "March 28, 2026",
     isoDate: "2026-03-28T12:30:00Z",
@@ -158,6 +136,7 @@ export const upcomingNights: HackNight[] = [
   {
     id: 3,
     slug: "shn-s2-003-hardware-sync",
+    locked: true,
     theme: "Hardware Sync",
     date: "April 11, 2026",
     isoDate: "2026-04-11T12:30:00Z",
@@ -206,6 +185,7 @@ export const upcomingNights: HackNight[] = [
   {
     id: 4,
     slug: "shn-s2-004-ai-at-the-edge",
+    locked: true,
     theme: "AI at the Edge",
     date: "April 25, 2026",
     isoDate: "2026-04-25T12:30:00Z",
@@ -248,6 +228,7 @@ export const upcomingNights: HackNight[] = [
   {
     id: 5,
     slug: "shn-s2-005-open-source-sprint",
+    locked: true,
     theme: "The Open Source Sprint",
     date: "May 9, 2026",
     isoDate: "2026-05-09T12:30:00Z",
@@ -295,13 +276,18 @@ export const upcomingNights: HackNight[] = [
   },
 ];
 
-// The next upcoming night — used for countdown
+export function getNightEnd(n: HackNight): Date {
+  return n.endIsoDate
+    ? new Date(n.endIsoDate)
+    : new Date(new Date(n.isoDate).getTime() + 5 * 60 * 60 * 1000);
+}
+
+// The current or next night (stays the same while the night is live, until it ends)
 export function getNextNight(): HackNight {
   const now = Date.now();
-  const next = upcomingNights.find(
-    (n) => new Date(n.isoDate).getTime() > now
-  );
-  return next ?? upcomingNights[upcomingNights.length - 1];
+  const open = upcomingNights.filter((n) => !n.locked);
+  const next = open.find((n) => getNightEnd(n).getTime() > now);
+  return next ?? open[open.length - 1];
 }
 
 export function getNextNightDate(): Date {

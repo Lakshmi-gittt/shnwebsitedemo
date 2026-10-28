@@ -10,7 +10,7 @@ export default function Community() {
     <section id="community" className="py-24 sm:py-32 px-5 sm:px-8 relative">
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
-          className="bg-[#fde4cf] rounded-xl border-2 border-black p-8 sm:p-12 text-center shadow-sm"
+          className="bg-[#fff6bf] rounded-xl border-2 border-black p-8 sm:p-12 text-center shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -46,7 +46,7 @@ export default function Community() {
 
             <a
               href={STICKERS_URL}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#fde4cf] text-black font-bold text-base px-7 py-3.5 rounded-lg border-2 border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-150"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#fff6bf] text-black font-bold text-base px-7 py-3.5 rounded-lg border-2 border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-150"
             >
               <Package size={17} strokeWidth={2} />
               Claim Sticker Pack

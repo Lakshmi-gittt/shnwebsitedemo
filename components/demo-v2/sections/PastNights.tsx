@@ -15,7 +15,7 @@ export default function PastNightsContent() {
           <h3 className="font-display font-black text-black text-2xl sm:text-3xl leading-tight">
             {n.title}
           </h3>
-          <p className="font-mono text-xs font-black text-black bg-[#fde4cf] inline-block px-2 py-1 border border-black rounded mt-2 self-start">
+          <p className="font-mono text-xs font-black text-black bg-[#fff6bf] inline-block px-2 py-1 border border-black rounded mt-2 self-start">
             {n.stat}
           </p>
         </div>

@@ -9,7 +9,7 @@ const litePalettes = [
   "bg-[#fae4f2]",
   "bg-[#e0f4fb]",
   "bg-[#e6f7e2]",
-  "bg-[#fde4cf]",
+  "bg-[#fff6bf]",
 ];
 
 function FAQCard({
@@ -30,7 +30,7 @@ function FAQCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: index * 0.04 }}
       viewport={{ once: true }}
-      className={`rounded-xl border-2 border-black ${cardBg} text-black p-5 sm:p-6 shadow-sm hover:shadow-md transition-all duration-200`}
+      className={`rounded-lg border-2 border-black ${cardBg} text-black px-4 py-3 sm:px-5 sm:py-3.5 transition-all duration-200`}
     >
       <button
         id={buttonId}
@@ -39,17 +39,17 @@ function FAQCard({
         className="w-full flex items-center justify-between gap-4 text-left group"
         onClick={() => setOpen(!open)}
       >
-        <span className="font-display font-bold text-base sm:text-lg text-black leading-snug">
+        <span className="font-display font-bold text-sm sm:text-base text-black leading-snug">
           {item.question}
         </span>
         <span
-          className="shrink-0 w-8 h-8 rounded-lg border border-black/40 bg-[#fde4cf] flex items-center justify-center text-black group-hover:border-black transition-colors"
+          className="shrink-0 w-6 h-6 rounded-md border border-black/40 bg-[#fff6bf] flex items-center justify-center text-black group-hover:border-black transition-colors"
           aria-hidden="true"
         >
           {open ? (
-            <Minus size={16} strokeWidth={2.5} />
+            <Minus size={14} strokeWidth={2.5} />
           ) : (
-            <Plus size={16} strokeWidth={2.5} />
+            <Plus size={14} strokeWidth={2.5} />
           )}
         </span>
       </button>
@@ -66,8 +66,8 @@ function FAQCard({
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="border-t border-black/15 mt-3 pt-3">
-              <p className="text-black/85 font-normal text-sm sm:text-base leading-relaxed">
+            <div className="border-t border-black/15 mt-2.5 pt-2.5">
+              <p className="text-black/85 font-normal text-xs sm:text-sm leading-relaxed">
                 {item.answer}
               </p>
             </div>
@@ -80,11 +80,11 @@ function FAQCard({
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
+    <section id="faq" className="py-14 sm:py-20 px-4 sm:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <motion.div
-          className="mb-12 text-center sm:text-left"
+          className="mb-8 text-center sm:text-left"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -93,13 +93,13 @@ export default function FAQ() {
           <p className="font-mono text-xs font-bold text-black uppercase tracking-wider mb-3 bg-[#ffd34e] inline-block px-3 py-1 border border-black rounded shadow-sm">
             Common Questions
           </p>
-          <h2 className="font-display font-bold uppercase tracking-tight text-3xl sm:text-5xl lg:text-6xl text-black leading-[1.05]">
+          <h2 className="font-display font-bold uppercase tracking-tight text-2xl sm:text-4xl lg:text-5xl text-black leading-[1.05]">
             Everything You Need to Know
           </h2>
         </motion.div>
 
         {/* 2-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-start">
           {faq.map((item, i) => (
             <FAQCard key={item.question} item={item} index={i} />
           ))}
@@ -107,13 +107,13 @@ export default function FAQ() {
 
         {/* Support CTA */}
         <motion.div
-          className="mt-14 flex items-center justify-center text-center"
+          className="mt-8 flex items-center justify-center text-center"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-[#e0f4fb] border-2 border-black rounded-xl shadow-sm">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-4 py-3 bg-[#e0f4fb] border-2 border-black rounded-lg">
             <span className="text-black font-semibold text-sm sm:text-base">
               Still have questions?
             </span>

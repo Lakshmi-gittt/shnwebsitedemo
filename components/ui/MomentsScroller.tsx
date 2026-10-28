@@ -35,7 +35,7 @@ const collageItems = [
   {
     tag: "MOMENT #04",
     tagBg: "bg-[#ffd34e]",
-    cardBg: "bg-[#fde4cf]",
+    cardBg: "bg-[#fff6bf]",
     colSpan: "lg:col-span-7",
     aspect: "aspect-[16/9]",
   },
@@ -78,7 +78,7 @@ export default function MomentsScroller({
                     className="w-full h-full object-cover block rounded-lg"
                   />
                 ) : (
-                  <div className="w-full h-full bg-[#fde4cf] flex flex-col items-center justify-center p-6 text-center border border-dashed border-black/20 rounded-lg">
+                  <div className="w-full h-full bg-[#fff6bf] flex flex-col items-center justify-center p-6 text-center border border-dashed border-black/20 rounded-lg">
                     <Camera size={32} className="text-black/40 mb-2 stroke-[1.75]" />
                     <span className="font-mono text-xs font-semibold text-black/50 uppercase tracking-wider">
                       {item.tag}

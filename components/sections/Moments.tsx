@@ -28,7 +28,7 @@ export default function Moments() {
           </div>
           <a
             href="/moments/"
-            className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-black bg-[#fde4cf] border-2 border-black px-5 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all shrink-0"
+            className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-black bg-[#fff6bf] border-2 border-black px-5 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all shrink-0"
           >
             View all moments
             <ArrowRight size={14} strokeWidth={2} />

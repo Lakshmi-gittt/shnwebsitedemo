@@ -81,7 +81,7 @@ export default function EventDetailClient({ night }: { night: HackNight }) {
           </SectionHeading>
 
           <div className="flex flex-wrap gap-3 sm:gap-4 text-black font-mono font-medium text-xs sm:text-sm mb-8">
-            <div className="flex items-center gap-2 bg-[#fde4cf] px-3 py-1.5 rounded-lg border border-black shadow-sm">
+            <div className="flex items-center gap-2 bg-[#fff6bf] px-3 py-1.5 rounded-lg border border-black shadow-sm">
               <CalendarDays size={14} className="stroke-[2]" />
               <span>{night.date} · 6:00 PM IST</span>
             </div>
@@ -124,7 +124,7 @@ export default function EventDetailClient({ night }: { night: HackNight }) {
 
         {/* The Challenge */}
         <motion.div
-          className="mb-14 rounded-xl border-2 border-black bg-[#fde4cf] p-6 sm:p-7 shadow-sm border-l-4 border-l-[#ffd34e]"
+          className="mb-14 rounded-xl border-2 border-black bg-[#fff6bf] p-6 sm:p-7 shadow-sm border-l-4 border-l-[#ffd34e]"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -138,7 +138,7 @@ export default function EventDetailClient({ night }: { night: HackNight }) {
           <p className="text-black font-semibold text-lg sm:text-xl leading-relaxed mb-4">
             {night.challenge}
           </p>
-          <div className="font-mono text-xs font-semibold text-black/80 bg-[#fde4cf] inline-block px-3 py-1 border border-black/20 rounded">
+          <div className="font-mono text-xs font-semibold text-black/80 bg-[#fff6bf] inline-block px-3 py-1 border border-black/20 rounded">
             Push to public GitHub · Submit before midnight · Solo or team of 2
           </div>
         </motion.div>
@@ -228,7 +228,7 @@ export default function EventDetailClient({ night }: { night: HackNight }) {
                     rel="noopener noreferrer"
                     className="bg-[#e6f7e2] rounded-xl border-2 border-black p-4 flex items-center gap-3 group shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-[#fde4cf] border border-black flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-lg bg-[#fff6bf] border border-black flex items-center justify-center shrink-0">
                       <Icon size={15} className="text-black stroke-[2]" />
                     </div>
                     <div className="min-w-0 flex-1">

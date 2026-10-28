@@ -12,7 +12,7 @@ const archiveCardPalettes = [
   { cardBg: "bg-[#fae4f2]", tagBg: "bg-[#f5d6ed]" },
   { cardBg: "bg-[#e6f7e2]", tagBg: "bg-[#d4f5e0]" },
   { cardBg: "bg-[#e0f4fb]", tagBg: "bg-[#aeeaf5]" },
-  { cardBg: "bg-[#fde4cf]", tagBg: "bg-[#ffd34e]" },
+  { cardBg: "bg-[#fff6bf]", tagBg: "bg-[#ffd34e]" },
 ];
 
 export default function ArchivePage() {
@@ -129,16 +129,16 @@ export default function ArchivePage() {
                   </div>
 
                   <div className="flex flex-wrap gap-2.5 mb-4 font-mono text-xs font-medium text-black/70">
-                    <span className="bg-[#fde4cf] px-2 py-0.5 rounded border border-black/20">
+                    <span className="bg-[#fff6bf] px-2 py-0.5 rounded border border-black/20">
                       {night.date}
                     </span>
-                    <span className="bg-[#fde4cf] px-2 py-0.5 rounded border border-black/20">
+                    <span className="bg-[#fff6bf] px-2 py-0.5 rounded border border-black/20">
                       {night.stack}
                     </span>
                   </div>
 
                   {/* Best project preview */}
-                  <div className="flex items-start gap-2.5 p-3 rounded-lg border border-black/20 bg-[#fde4cf] mb-4 max-w-lg">
+                  <div className="flex items-start gap-2.5 p-3 rounded-lg border border-black/20 bg-[#fff6bf] mb-4 max-w-lg">
                     <Star
                       size={14}
                       className="text-black/70 mt-0.5 shrink-0 stroke-[2]"
@@ -158,11 +158,11 @@ export default function ArchivePage() {
 
                   {/* Stats */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex items-center gap-1.5 bg-[#fde4cf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
+                    <div className="flex items-center gap-1.5 bg-[#fff6bf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
                       <Users size={13} strokeWidth={2} />
                       <span>{night.participants} builders</span>
                     </div>
-                    <div className="flex items-center gap-1.5 bg-[#fde4cf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
+                    <div className="flex items-center gap-1.5 bg-[#fff6bf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
                       <FolderGit2 size={13} strokeWidth={2} />
                       <span>{night.submittedCount} projects submitted</span>
                     </div>

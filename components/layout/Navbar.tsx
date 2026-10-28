@@ -8,7 +8,6 @@ const navLinks = [
   { label: "How It Works", href: "/#get-selected" },
   { label: "Timeline", href: "/#timeline" },
   { label: "Past Nights", href: "/archive/" },
-  { label: "Moments", href: "/moments/" },
   { label: "Campus", href: "/campus/" },
   { label: "Community", href: "/#community" },
 ];

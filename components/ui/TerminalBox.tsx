@@ -39,7 +39,7 @@ export default function TerminalBox({
   return (
     <div className="glass-card rounded-xl overflow-hidden font-mono text-sm w-full max-w-xl mx-auto">
       {/* Terminal chrome */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-[#fde4cf] border-b border-white/8">
+      <div className="flex items-center gap-2 px-4 py-3 bg-[#fff6bf] border-b border-white/8">
         <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
         <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
         <span className="w-3 h-3 rounded-full bg-[#28c840]" />
