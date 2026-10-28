@@ -24,6 +24,7 @@
 
 /* Flat poster accents — pink / blue / green / yellow */
 :root {
+  color-scheme: light;
   --ink: #111111;
   --paper: #f5f4ee;
   --pink: #f28ad8;
