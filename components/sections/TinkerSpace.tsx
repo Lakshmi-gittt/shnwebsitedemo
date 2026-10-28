@@ -53,7 +53,7 @@ export default function TinkerSpace() {
             </div>
 
             {/* Frame Container */}
-            <div className="relative w-full border-2 border-black bg-[#fde4cf] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-3">
+            <div className="relative w-full border-2 border-black bg-[#fff6bf] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-3">
               <div className="rounded-lg overflow-hidden aspect-[16/10] bg-[#f5f4ee]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

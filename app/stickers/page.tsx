@@ -30,7 +30,7 @@ const liteSharePalettes = [
   "bg-[#fae4f2]",
   "bg-[#e0f4fb]",
   "bg-[#e6f7e2]",
-  "bg-[#fde4cf]",
+  "bg-[#fff6bf]",
 ];
 
 function StickerSVG({ index }: { index: number }) {
@@ -72,7 +72,7 @@ function PlatformIcon({ platform }: { platform: SocialShare["platform"] }) {
   const Icon = config.icon;
   return (
     <span
-      className="inline-flex items-center gap-1 font-mono text-xs font-semibold px-2.5 py-0.5 rounded border border-black/20 bg-[#fde4cf]"
+      className="inline-flex items-center gap-1 font-mono text-xs font-semibold px-2.5 py-0.5 rounded border border-black/20 bg-[#fff6bf]"
       style={{ color: config.color }}
     >
       <Icon size={11} strokeWidth={2} />
@@ -169,7 +169,7 @@ function ClaimForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Abhijith P"
-          className="w-full bg-[#fde4cf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black placeholder-black/40 font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+          className="w-full bg-[#fff6bf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black placeholder-black/40 font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
         />
       </div>
       <div>
@@ -186,7 +186,7 @@ function ClaimForm() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://twitter.com/you/status/..."
-          className="w-full bg-[#fde4cf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black placeholder-black/40 font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+          className="w-full bg-[#fff6bf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black placeholder-black/40 font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
@@ -203,7 +203,7 @@ function ClaimForm() {
             onChange={(e) =>
               setPlatform(e.target.value as SocialShare["platform"])
             }
-            className="w-full bg-[#fde4cf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+            className="w-full bg-[#fff6bf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
           >
             <option value="twitter">Twitter / X</option>
             <option value="instagram">Instagram</option>
@@ -224,7 +224,7 @@ function ClaimForm() {
             value={night}
             onChange={(e) => setNight(e.target.value)}
             placeholder="SHN #01"
-            className="w-full bg-[#fde4cf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black placeholder-black/40 font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+            className="w-full bg-[#fff6bf] border border-black/40 rounded-lg px-4 py-2.5 text-sm text-black placeholder-black/40 font-normal focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
           />
         </div>
       </div>
@@ -243,7 +243,7 @@ function ClaimForm() {
 }
 
 export default function StickersPage() {
-  const previewPalettes = ["bg-[#fae4f2]", "bg-[#e6f7e2]", "bg-[#e0f4fb]", "bg-[#fde4cf]"];
+  const previewPalettes = ["bg-[#fae4f2]", "bg-[#e6f7e2]", "bg-[#e0f4fb]", "bg-[#fff6bf]"];
 
   return (
     <main className="min-h-screen bg-[#F5F4EE] text-[#111111] relative selection:bg-[#f5d6ed] selection:text-black">
@@ -308,7 +308,7 @@ export default function StickersPage() {
               step: "03",
               title: "Get Your Stickers",
               desc: "Once verified, we ship your exclusive SHN sticker pack to your doorstep. Free. Because builders who share deserve something tangible.",
-              cardBg: "bg-[#fde4cf]",
+              cardBg: "bg-[#fff6bf]",
               badgeBg: "bg-[#ffd34e]",
             },
           ].map((s, i) => (
@@ -342,7 +342,7 @@ export default function StickersPage() {
               </p>
               <SectionHeading accent="pink">Your Sticker Pack</SectionHeading>
             </div>
-            <p className="font-mono text-xs font-semibold uppercase bg-[#fde4cf] border border-black/30 px-3 py-1 rounded shadow-sm text-black/70">
+            <p className="font-mono text-xs font-semibold uppercase bg-[#fff6bf] border border-black/30 px-3 py-1 rounded shadow-sm text-black/70">
               Pack of 4 · High-Quality Vinyl
             </p>
           </div>
@@ -406,7 +406,7 @@ export default function StickersPage() {
             </div>
           </div>
 
-          <div className="bg-[#fde4cf] rounded-xl border-2 border-black p-6 sm:p-7 shadow-sm">
+          <div className="bg-[#fff6bf] rounded-xl border-2 border-black p-6 sm:p-7 shadow-sm">
             <ClaimForm />
           </div>
         </motion.div>

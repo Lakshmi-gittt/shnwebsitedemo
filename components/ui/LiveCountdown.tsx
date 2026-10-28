@@ -1,12 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getNextNightDate } from "@/lib/data";
+import { getNextNight, getNightEnd } from "@/lib/data";
 
 interface TimeLeft { days: number; hours: number; minutes: number; seconds: number; }
 
-function getTimeLeft(target: Date): TimeLeft {
-  const diff = Math.max(0, target.getTime() - Date.now());
+type Phase = "upcoming" | "live" | "ended";
+
+const ZERO: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+// Works out, from the real clock, whether the night hasn't started, is live, or is over
+function getState(): { phase: Phase; timeLeft: TimeLeft } {
+  const now = Date.now();
+  const night = getNextNight();
+  const start = new Date(night.isoDate).getTime();
+  const end = getNightEnd(night).getTime();
+  if (now < start) return { phase: "upcoming", timeLeft: getTimeLeft(start - now) };
+  if (now < end) return { phase: "live", timeLeft: getTimeLeft(end - now) };
+  return { phase: "ended", timeLeft: ZERO };
+}
+
+function getTimeLeft(ms: number): TimeLeft {
+  const diff = Math.max(0, ms);
   return {
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
     hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -25,36 +40,57 @@ function DigitBlock({ value, label, bgColor }: { value: number; label: string; b
           {pad(value)}
         </span>
       </div>
-      <span className="font-mono text-[10px] sm:text-xs md:text-sm font-bold text-black uppercase tracking-widest mt-2.5 px-2 py-0.5 border border-black bg-[#fde4cf] rounded">
+      <span className="font-mono text-[10px] sm:text-xs md:text-sm font-bold text-black uppercase tracking-widest mt-2.5 px-2 py-0.5 border border-black bg-[#fff6bf] rounded">
         {label}
       </span>
     </div>
   );
 }
 
+const PHASE_LABEL: Record<Phase, string> = {
+  upcoming: "Starts in",
+  live: "Live now · ends in",
+  ended: "This hack night has ended",
+};
+
 export default function LiveCountdown() {
-  const [target] = useState(() => getNextNightDate());
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(target));
+  // Start at zero on server + first render (avoids hydration mismatch), then tick off the real clock
+  const [state, setState] = useState<{ phase: Phase; timeLeft: TimeLeft }>({ phase: "upcoming", timeLeft: ZERO });
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => setTimeLeft(getTimeLeft(target)), 1000);
-    return () => clearInterval(interval);
-  }, [target]);
+    const tick = () => setState(getState());
+    tick();
+    setReady(true);
+    const interval = setInterval(tick, 1000);
+    document.addEventListener("visibilitychange", tick);
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("visibilitychange", tick);
+    };
+  }, []);
+
+  const { phase, timeLeft } = state;
 
   return (
-    <div
-      className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8"
-      aria-live="polite"
-      aria-atomic="true"
-      aria-label={`${timeLeft.days} days ${timeLeft.hours} hours ${timeLeft.minutes} minutes ${timeLeft.seconds} seconds`}
-    >
-      <DigitBlock value={timeLeft.days} label="DAYS" bgColor="bg-[#d0ecf8]" />
-      <DigitBlock value={timeLeft.hours} label="HOURS" bgColor="bg-[#d4f5e0]" />
-      <DigitBlock value={timeLeft.minutes} label="MINUTES" bgColor="bg-[#f5d6ed]" />
-      <DigitBlock value={timeLeft.seconds} label="SECONDS" bgColor="bg-[#fde4cf]" />
+    <div className="flex flex-col items-center gap-5">
+      {ready && (
+        <span className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-black bg-[#f5d6ed] border border-black rounded px-3 py-1 shadow-sm">
+          {phase === "live" && <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" aria-hidden="true" />}
+          {PHASE_LABEL[phase]}
+        </span>
+      )}
+      <div
+        className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8"
+        aria-live="off"
+        role="timer"
+        aria-label={`${timeLeft.days} days ${timeLeft.hours} hours ${timeLeft.minutes} minutes ${timeLeft.seconds} seconds`}
+      >
+        <DigitBlock value={timeLeft.days} label="DAYS" bgColor="bg-[#d0ecf8]" />
+        <DigitBlock value={timeLeft.hours} label="HOURS" bgColor="bg-[#d4f5e0]" />
+        <DigitBlock value={timeLeft.minutes} label="MINUTES" bgColor="bg-[#f5d6ed]" />
+        <DigitBlock value={timeLeft.seconds} label="SECONDS" bgColor="bg-[#fde4cf]" />
+      </div>
     </div>
   );
 }
-
-
-

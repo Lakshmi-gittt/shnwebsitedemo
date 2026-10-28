@@ -30,7 +30,7 @@ const steps = [
     step: "04",
     title: "Get Invited to Finale",
     description: "Top teams from the 5 online build sprints get direct invitations to the 24-hour in-person hackathon at TinkerSpace Kochi.",
-    bg: "bg-[#fde4cf]",
+    bg: "bg-[#fff6bf]",
   },
 ];
 
@@ -46,7 +46,14 @@ export default function GetSelected() {
             <span className="text-black">Get Invited.</span>
           </>
         }
-        subtext="There is no jury during the hack night. Just build something real, push it to GitHub, and let your project speak for itself."
+        subtext={
+          <>
+            <span className="block font-display font-bold text-black text-xl sm:text-2xl mb-1">
+              Earn Your Spot
+            </span>
+            Complete projects in any of the last 5 online HackNights, and you&apos;ll qualify for an exclusive invite.
+          </>
+        }
       />
     </section>
   );

@@ -17,26 +17,20 @@ interface ProcessCardsProps {
   steps: Step[];
   badge?: string;
   heading?: React.ReactNode;
-  subtext?: string;
+  subtext?: React.ReactNode;
 }
 
 const defaultPalettes = [
   { cardBg: "bg-[#fae4f2]", accent: "bg-[#f5d6ed]" },
   { cardBg: "bg-[#e0f4fb]", accent: "bg-[#aeeaf5]" },
   { cardBg: "bg-[#e6f7e2]", accent: "bg-[#d4f5e0]" },
-  { cardBg: "bg-[#fde4cf]", accent: "bg-[#ffd34e]" },
-];
-
-const cardOffsets = [
-  { y: 0,  x: 0, zIndex: 10 },
-  { y: 10, x: 0, zIndex: 20 },
-  { y: 20, x: 0, zIndex: 30 },
-  { y: 30, x: 0, zIndex: 40 },
+  { cardBg: "bg-[#fff6bf]", accent: "bg-[#ffd34e]" },
 ];
 
 const TOTAL_STEPS = 4;
 const SCROLL_PER_STEP = 300;
-const TOTAL_SCROLL = SCROLL_PER_STEP * (TOTAL_STEPS - 1); // 900 px
+// Extra final step of scroll so card 04 stays pinned and readable before the section unpins
+const TOTAL_SCROLL = SCROLL_PER_STEP * TOTAL_STEPS; // 1200 px
 
 export default function ProcessCards({ steps, badge, heading, subtext }: ProcessCardsProps) {
   const [revealedCount, setRevealedCount] = useState<number>(1);
@@ -90,44 +84,16 @@ export default function ProcessCards({ steps, badge, heading, subtext }: Process
                 </h2>
               )}
               {subtext && (
-                <p className="text-black/75 font-normal text-base sm:text-lg leading-relaxed max-w-md">
+                <div className="text-black/75 font-normal text-base sm:text-lg leading-relaxed max-w-md">
                   {subtext}
-                </p>
-              )}
-
-              {/* Progress dots */}
-              <div className="flex flex-col gap-2 mt-2">
-                <div className="flex items-center gap-2">
-                  {[1, 2, 3, 4].map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => setRevealedCount(num)}
-                      className={`px-3 py-1 rounded-md border border-black font-mono text-xs font-bold transition-all ${
-                        revealedCount >= num
-                          ? "bg-black text-white shadow-sm -translate-y-0.5"
-                          : "bg-[#fde4cf] text-black/50 hover:text-black hover:bg-neutral-100"
-                      }`}
-                      aria-label={`Deal to card ${num}`}
-                    >
-                      0{num}
-                    </button>
-                  ))}
                 </div>
-                <p className="font-mono text-xs font-medium text-black/60">
-                  {revealedCount < 4 ? (
-                    <span>↓ Scroll to reveal step 0{revealedCount + 1}</span>
-                  ) : (
-                    <span className="text-black font-bold">✓ All 4 steps revealed · Keep scrolling</span>
-                  )}
-                </p>
-              </div>
+              )}
             </div>
 
-            {/* RIGHT: stacked card deck */}
-            <div className="relative h-[260px] sm:h-[300px] lg:h-[340px] w-full">
+            {/* RIGHT: compact column of cards, revealed one by one on scroll */}
+            <div className="flex flex-col gap-3 w-full">
               {steps.map((step, i) => {
                 const isRevealed = revealedCount >= i + 1;
-                const offset = cardOffsets[i];
                 const Icon = step.icon;
                 const palette = defaultPalettes[i % defaultPalettes.length];
 
@@ -137,42 +103,39 @@ export default function ProcessCards({ steps, badge, heading, subtext }: Process
                     initial={false}
                     animate={
                       isRevealed
-                        ? { y: offset.y, x: 0, rotate: 0, scale: 1, opacity: 1 }
-                        : { y: -120, x: 0, rotate: 0, scale: 1.02, opacity: 0 }
+                        ? { y: 0, opacity: 1 }
+                        : { y: -24, opacity: 0 }
                     }
                     transition={
                       isReducedMotion
                         ? { duration: 0 }
                         : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
                     }
-                    style={{ zIndex: offset.zIndex, pointerEvents: isRevealed ? "auto" : "none" }}
-                    className={`absolute inset-0 rounded-xl border-2 border-black ${palette.cardBg} text-black p-6 sm:p-7 flex flex-col justify-between shadow-md cursor-pointer select-none hover:shadow-lg transition-shadow relative overflow-hidden`}
+                    style={{ pointerEvents: isRevealed ? "auto" : "none" }}
+                    className={`relative rounded-xl border-2 border-black ${palette.cardBg} text-black px-4 py-3 sm:px-5 sm:py-4 flex items-center gap-4 shadow-md cursor-pointer select-none hover:shadow-lg transition-shadow overflow-hidden`}
                     onClick={() => setRevealedCount((prev) => (prev < 4 ? prev + 1 : 1))}
                     title="Click or scroll to proceed"
                   >
-                    <div className={`absolute top-0 inset-x-0 h-1.5 ${palette.accent}`} />
+                    <div className={`absolute top-0 inset-x-0 h-1 ${palette.accent}`} />
 
-                    {/* Step number + icon */}
-                    <div className="flex items-start justify-between border-b border-black/15 pb-4 pt-1">
-                      <span className="font-mono text-5xl sm:text-6xl font-bold text-black/30 leading-none">
-                        {step.step}
-                      </span>
-                      {Icon && (
-                        <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center border border-black shadow-sm">
-                          <Icon size={18} strokeWidth={2} />
-                        </div>
-                      )}
-                    </div>
+                    <span className="font-mono text-3xl sm:text-4xl font-bold text-black/30 leading-none shrink-0">
+                      {step.step}
+                    </span>
 
-                    {/* Title + description */}
-                    <div className="mt-3 sm:mt-4">
-                      <h3 className="font-display text-xl sm:text-2xl font-bold text-black mb-1.5 leading-snug">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-base sm:text-xl font-bold text-black leading-snug">
                         {step.title}
                       </h3>
-                      <p className="text-black/75 font-normal text-xs sm:text-sm md:text-base leading-relaxed">
+                      <p className="text-black/75 font-normal text-xs sm:text-sm leading-snug mt-0.5">
                         {step.description}
                       </p>
                     </div>
+
+                    {Icon && (
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-black text-white flex items-center justify-center border border-black shadow-sm shrink-0">
+                        <Icon size={18} strokeWidth={2} />
+                      </div>
+                    )}
                   </motion.div>
                 );
               })}

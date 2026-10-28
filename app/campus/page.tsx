@@ -453,7 +453,7 @@ export default function CampusPage() {
             </a>
             <a
               href="mailto:hello@tinkerhub.org"
-              className="inline-flex items-center gap-2.5 bg-[#fde4cf] text-black font-mono font-bold text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg border-2 border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2.5 bg-[#fff6bf] text-black font-mono font-bold text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg border-2 border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               <Mail size={16} strokeWidth={2} />
               Email Us

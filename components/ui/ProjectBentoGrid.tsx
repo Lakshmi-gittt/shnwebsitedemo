@@ -47,7 +47,7 @@ function ProjectCard({ project, featured, index }: ProjectCardProps) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-xs bg-[#fde4cf] border border-white/8 rounded px-2 py-0.5 text-[#f5d6ed]"
+              className="font-mono text-xs bg-[#fff6bf] border border-white/8 rounded px-2 py-0.5 text-[#f5d6ed]"
             >
               {tag}
             </span>

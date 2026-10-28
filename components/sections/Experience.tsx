@@ -9,7 +9,7 @@ const stats = [
   { value: "5", label: "Online Sprints", cardBg: "bg-[#e6f7e2]", tagBg: "bg-[#d4f5e0]" },
   { value: "24h", label: "Grand Finale", cardBg: "bg-[#fae4f2]", tagBg: "bg-[#f5d6ed]" },
   { value: "∞", label: "Things to Build", cardBg: "bg-[#e0f4fb]", tagBg: "bg-[#aeeaf5]" },
-  { value: "0", label: "Prior XP Needed", cardBg: "bg-[#fde4cf]", tagBg: "bg-[#ffd34e]" },
+  { value: "0", label: "Prior XP Needed", cardBg: "bg-[#fff6bf]", tagBg: "bg-[#ffd34e]" },
 ];
 
 export default function Experience() {
