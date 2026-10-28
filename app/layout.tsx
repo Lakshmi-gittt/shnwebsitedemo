@@ -51,6 +51,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5, // allow user zoom — accessibility requirement
   themeColor: "#f5f4ee",
+  colorScheme: "only light",
 };
 
 export default function RootLayout({
