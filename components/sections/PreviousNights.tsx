@@ -47,7 +47,7 @@ export default function PreviousNights() {
           </div>
           <a
             href="/archive/"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-black bg-[#fde4cf] border-2 border-black px-5 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all shrink-0"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-black bg-[#fff6bf] border-2 border-black px-5 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all shrink-0"
           >
             View all archives
             <ArrowRight size={14} strokeWidth={2} />
@@ -87,12 +87,12 @@ export default function PreviousNights() {
                     {night.theme}
                   </h3>
 
-                  <p className="font-mono text-xs font-semibold text-black/80 bg-[#fde4cf] px-2.5 py-1 border border-black/20 rounded inline-block mb-5">
+                  <p className="font-mono text-xs font-semibold text-black/80 bg-[#fff6bf] px-2.5 py-1 border border-black/20 rounded inline-block mb-5">
                     STACK: {night.stack}
                   </p>
 
                   {/* Best Project Card */}
-                  <div className="bg-[#fde4cf] border border-black/20 rounded-lg p-3.5 mb-6">
+                  <div className="bg-[#fff6bf] border border-black/20 rounded-lg p-3.5 mb-6">
                     <div className="flex items-center gap-1.5 font-mono text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1">
                       <Star size={13} className="text-black/70 stroke-[2]" />
                       <span>BEST PROJECT</span>
@@ -105,11 +105,11 @@ export default function PreviousNights() {
                 {/* Bottom Footer Stats & Action */}
                 <div className="pt-4 border-t border-black/15 flex flex-wrap items-center justify-between gap-3">
                   <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center gap-1.5 bg-[#fde4cf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
+                    <div className="flex items-center gap-1.5 bg-[#fff6bf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
                       <Users size={12} strokeWidth={2} />
                       <span>{night.participants} builders</span>
                     </div>
-                    <div className="flex items-center gap-1.5 bg-[#fde4cf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
+                    <div className="flex items-center gap-1.5 bg-[#fff6bf] border border-black/20 px-2.5 py-1 rounded text-black font-mono text-xs font-medium">
                       <FolderGit2 size={12} strokeWidth={2} />
                       <span>{night.submittedCount} projects</span>
                     </div>

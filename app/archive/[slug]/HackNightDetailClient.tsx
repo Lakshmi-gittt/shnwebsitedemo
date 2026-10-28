@@ -39,7 +39,7 @@ const projectCardPalettes = [
   "bg-[#fae4f2]",
   "bg-[#e0f4fb]",
   "bg-[#e6f7e2]",
-  "bg-[#fde4cf]",
+  "bg-[#fff6bf]",
 ];
 
 function ProjectCard({
@@ -51,7 +51,7 @@ function ProjectCard({
   index: number;
   isBest?: boolean;
 }) {
-  const cardBg = isBest ? "bg-[#fde4cf]" : projectCardPalettes[index % projectCardPalettes.length];
+  const cardBg = isBest ? "bg-[#fff6bf]" : projectCardPalettes[index % projectCardPalettes.length];
 
   return (
     <motion.div
@@ -98,7 +98,7 @@ function ProjectCard({
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="font-mono text-xs font-semibold bg-[#fde4cf] border border-black/20 rounded px-2 py-0.5 text-black"
+            className="font-mono text-xs font-semibold bg-[#fff6bf] border border-black/20 rounded px-2 py-0.5 text-black"
           >
             {tag}
           </span>
@@ -122,7 +122,7 @@ function ProjectCard({
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-mono text-xs font-bold bg-[#fde4cf] text-black px-3 py-1.5 rounded-lg border border-black shadow-sm hover:bg-neutral-50 transition-colors"
+            className="inline-flex items-center gap-1.5 font-mono text-xs font-bold bg-[#fff6bf] text-black px-3 py-1.5 rounded-lg border border-black shadow-sm hover:bg-neutral-50 transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             <ExternalLink size={13} strokeWidth={2} />
@@ -184,7 +184,7 @@ export default function HackNightDetailClient({
           </SectionHeading>
 
           <div className="flex flex-wrap gap-3 sm:gap-4 text-black font-mono font-medium text-xs sm:text-sm">
-            <div className="flex items-center gap-2 bg-[#fde4cf] px-3 py-1.5 rounded-lg border border-black shadow-sm">
+            <div className="flex items-center gap-2 bg-[#fff6bf] px-3 py-1.5 rounded-lg border border-black shadow-sm">
               <CalendarDays size={14} className="stroke-[2]" />
               <span>{night.date}</span>
             </div>
@@ -315,7 +315,7 @@ export default function HackNightDetailClient({
                     rel="noopener noreferrer"
                     className="bg-[#e6f7e2] rounded-xl border-2 border-black p-4 flex items-center gap-3 group shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-[#fde4cf] border border-black flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-lg bg-[#fff6bf] border border-black flex items-center justify-center shrink-0">
                       <Icon size={15} className="text-black stroke-[2]" />
                     </div>
                     <div className="min-w-0 flex-1">

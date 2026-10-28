@@ -24,7 +24,7 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-black/75 text-sm sm:text-base font-normal leading-relaxed max-w-sm mb-4">
-                Saturday Hack Night is a TinkerHub Foundation initiative. Free, open to all, no experience needed. 5 online build nights + 1 offline finale.
+                A weekly hackathon initiative by TinkerHub to help you build cool stuff, experience new technologies, and compete with an amazing community of developers.
               </p>
               <a
                 href="https://tinkerhub.org"
@@ -39,7 +39,7 @@ export default function Footer() {
 
             {/* Navigate links */}
             <div>
-              <p className="font-mono text-xs font-bold text-black uppercase tracking-wider mb-4 inline-block bg-[#fde4cf] px-2 py-0.5 border border-black rounded shadow-sm">
+              <p className="font-mono text-xs font-bold text-black uppercase tracking-wider mb-4 inline-block bg-[#fff6bf] px-2 py-0.5 border border-black rounded shadow-sm">
                 Navigate
               </p>
               <div className="flex flex-col gap-2.5">
@@ -102,7 +102,7 @@ export default function Footer() {
                 href="https://github.com/appukurian/saturday-hack-night"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 font-mono text-xs font-bold text-black bg-[#fde4cf] px-2.5 py-1 border border-black/30 rounded shadow-sm hover:border-black transition-colors"
+                className="flex items-center gap-1.5 font-mono text-xs font-bold text-black bg-[#fff6bf] px-2.5 py-1 border border-black/30 rounded shadow-sm hover:border-black transition-colors"
               >
                 <Github size={13} />
                 Open Source

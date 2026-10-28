@@ -105,8 +105,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-base sm:text-lg md:text-xl font-medium text-neutral-800 max-w-2xl leading-relaxed mb-10"
         >
-          5 consecutive online build nights. Top builders get invited to a
-          24-hour in-person hackathon at TinkerSpace Kochi. Free. No experience needed.
+          Five hack nights on Saturday to explore tech, build fun projects, and grow together.
         </motion.p>
 
         {/* COUNTDOWN SECTION */}
@@ -124,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="bg-[#e6f7e2] border-2 border-black rounded-xl p-4 sm:p-6 shadow-sm max-w-xl w-full mb-10 text-left relative"
+          className="bg-[#d6ebff] border-2 border-black rounded-xl p-4 sm:p-6 shadow-sm max-w-xl w-full mb-10 text-left relative"
         >
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-3 mb-3">
             <div>
@@ -134,20 +133,20 @@ export default function Hero() {
               <h2 className="text-xl sm:text-2xl font-bold text-black">{nextNight.theme}</h2>
             </div>
             <span className="bg-[#d4f5e0] text-black font-mono text-xs font-bold px-3 py-1 border border-black rounded-lg">
-              {nextNight.date} · 6 PM
+              {nextNight.date} · 6 – 11 PM
             </span>
           </div>
 
           <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-            <div className="bg-[#fde4cf] p-2 border border-black/20 rounded-lg">
+            <div className="bg-[#fff6bf] p-2 border border-black/20 rounded-lg">
               <span className="text-black/50 text-[9px] block uppercase font-medium">Stack</span>
               <span className="font-bold text-black">{nextNight.stack}</span>
             </div>
-            <div className="bg-[#fde4cf] p-2 border border-black/20 rounded-lg">
+            <div className="bg-[#fff6bf] p-2 border border-black/20 rounded-lg">
               <span className="text-black/50 text-[9px] block uppercase font-medium">Difficulty</span>
               <span className="font-bold text-black">{nextNight.difficulty}</span>
             </div>
-            <div className="bg-[#fde4cf] p-2 border border-black/20 rounded-lg">
+            <div className="bg-[#fff6bf] p-2 border border-black/20 rounded-lg">
               <span className="text-black/50 text-[9px] block uppercase font-medium">Format</span>
               <span className="font-bold text-black">Solo / Team</span>
             </div>
@@ -172,7 +171,7 @@ export default function Hero() {
           </a>
           <a
             href="#get-selected"
-            className="inline-flex items-center justify-center gap-2 bg-[#fde4cf] text-black font-bold text-base px-8 py-3.5 rounded-xl border-2 border-black shadow-sm hover:bg-neutral-50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-150"
+            className="inline-flex items-center justify-center gap-2 bg-[#fff6bf] text-black font-bold text-base px-8 py-3.5 rounded-xl border-2 border-black shadow-sm hover:bg-neutral-50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-150"
           >
             How it works
           </a>

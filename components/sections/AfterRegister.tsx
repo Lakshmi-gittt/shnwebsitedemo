@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "@/lib/motion";
-import { Mail, MessageSquare, Lightbulb, Github, Moon, Trophy } from "lucide-react";
+import { Mail, MessageSquare, BookOpen, Lightbulb, Github, Moon, Trophy } from "lucide-react";
 
 const steps = [
   {
@@ -27,45 +27,57 @@ const steps = [
   },
   {
     stepNum: "03",
-    time: "Saturday 6:00 PM IST",
-    title: "Theme drops. Hacking starts.",
+    time: "Friday 8:30 – 9:30 PM IST",
+    title: "Let's Explore",
     description:
-      "Full challenge brief goes live. Mentors come online. Build — no check-ins, no progress reports.",
-    icon: Lightbulb,
+      "A study jam on the week's stack, the night before hack night. Meet the mentors, ask questions and dig deeper into the topic.",
+    icon: BookOpen,
     color: "#d4f5e0",
     cardBg: "bg-[#e6f7e2]",
   },
   {
     stepNum: "04",
+    time: "Saturday 6:00 PM IST",
+    title: "Theme drops. Hacking starts.",
+    description:
+      "Full challenge brief goes live. Mentors come online. Build — no check-ins, no progress reports.",
+    icon: Lightbulb,
+    color: "#FFD34E",
+    cardBg: "bg-[#fff6bf]",
+  },
+  {
+    stepNum: "05",
     time: "Saturday by midnight",
     title: "Push and submit",
     description:
       "Push to a public GitHub repo and submit via hub.app. A working prototype is enough.",
     icon: Github,
-    color: "#FFD34E",
-    cardBg: "bg-[#fde4cf]",
-  },
-  {
-    stepNum: "05",
-    time: "Sunday",
-    title: "Projects reviewed",
-    description:
-      "The TinkerHub team reviews all submissions. Standout projects featured in Discord and the archive.",
-    icon: Moon,
     color: "#f5d6ed",
     cardBg: "bg-[#fae4f2]",
   },
   {
     stepNum: "06",
+    time: "Sunday",
+    title: "Projects reviewed",
+    description:
+      "The TinkerHub team reviews all submissions. Standout projects featured in Discord and the archive.",
+    icon: Moon,
+    color: "#AEEAF5",
+    cardBg: "bg-[#e0f4fb]",
+  },
+  {
+    stepNum: "07",
     time: "After all 5 nights",
     title: "Finale invitations sent",
     description:
       "Top teams receive direct invitations to the 24-hour offline hackathon at TinkerSpace Kochi.",
     icon: Trophy,
-    color: "#AEEAF5",
-    cardBg: "bg-[#e0f4fb]",
+    color: "#d4f5e0",
+    cardBg: "bg-[#e6f7e2]",
   },
 ];
+
+const LAST = steps.length - 1;
 
 function StepCard({
   step,
@@ -85,7 +97,7 @@ function StepCard({
     >
       <div className="flex items-center justify-between gap-3 border-b border-black/15 pb-3 mb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs font-bold px-2 py-0.5 bg-[#fde4cf] text-black rounded border border-black/30 uppercase tracking-wider">
+          <span className="font-mono text-xs font-bold px-2 py-0.5 bg-[#fff6bf] text-black rounded border border-black/30 uppercase tracking-wider">
             {step.stepNum}
           </span>
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-black/70">
@@ -149,18 +161,18 @@ export default function AfterRegister() {
       lastTimestamp = timestamp;
 
       const positions = getDotPositions();
-      if (positions.length >= 6 && positions[0] > 0) {
+      if (positions.length >= steps.length && positions[0] > 0) {
         setLineTop(positions[0]);
-        setLineHeight(positions[5] - positions[0]);
+        setLineHeight(positions[LAST] - positions[0]);
 
         if (state === "PAUSED") {
           stateTime += delta;
           setBallY(positions[currentStep]);
           setActiveStep(currentStep);
 
-          const limit = currentStep === 5 ? FINAL_PAUSE_DURATION : PAUSE_DURATION;
+          const limit = currentStep === LAST ? FINAL_PAUSE_DURATION : PAUSE_DURATION;
           if (stateTime >= limit) {
-            if (currentStep < 5) {
+            if (currentStep < LAST) {
               state = "MOVING";
               stateTime = 0;
             } else {
@@ -196,9 +208,9 @@ export default function AfterRegister() {
 
     const handleResize = () => {
       const pos = getDotPositions();
-      if (pos.length >= 6 && pos[0] > 0) {
+      if (pos.length >= steps.length && pos[0] > 0) {
         setLineTop(pos[0]);
-        setLineHeight(pos[5] - pos[0]);
+        setLineHeight(pos[LAST] - pos[0]);
       }
     };
 
@@ -249,7 +261,7 @@ export default function AfterRegister() {
               style={{ top: `${ballY}px`, transform: "translate(-50%, -50%)" }}
               aria-hidden="true"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#fde4cf] mx-auto mt-0.5" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#fff6bf] mx-auto mt-0.5" />
             </div>
           )}
 
@@ -285,7 +297,7 @@ export default function AfterRegister() {
                     {/* Dot — sits on the line (left-5 = 20px, dot is 16px wide → centered) */}
                     <div
                       className={`shrink-0 w-4 h-4 rounded-full border-2 border-black z-10 flex items-center justify-center transition-all duration-200 ${
-                        isCurrent ? "bg-black scale-125" : "bg-[#fde4cf]"
+                        isCurrent ? "bg-black scale-125" : "bg-[#fff6bf]"
                       }`}
                       style={{ marginLeft: "12px" /* centers the 16px dot on the 3px line at left-5(20px) */ }}
                     >
@@ -325,7 +337,7 @@ export default function AfterRegister() {
                     {/* Centre dot — sits exactly on the centre line */}
                     <div
                       className={`shrink-0 w-4 h-4 rounded-full border-2 border-black z-10 flex items-center justify-center transition-all duration-200 ${
-                        isCurrent ? "bg-black scale-125" : "bg-[#fde4cf]"
+                        isCurrent ? "bg-black scale-125" : "bg-[#fff6bf]"
                       }`}
                     >
                       {!isCurrent && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
